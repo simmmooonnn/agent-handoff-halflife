@@ -1,0 +1,56 @@
+{
+  "model": "claude-sonnet-4-6",
+  "K": 6,
+  "budget": 25,
+  "n_probes": 12,
+  "ndist": 7,
+  "per_type": {
+    "numeric": {
+      "neutral": 0.083,
+      "reinject": 0.417,
+      "slots_regen": 1,
+      "slots_copy": 1,
+      "slot_verbatim": 1
+    },
+    "entity": {
+      "neutral": 0.25,
+      "reinject": 0.833,
+      "slots_regen": 1,
+      "slots_copy": 1,
+      "slot_verbatim": 1
+    },
+    "negation": {
+      "neutral": 0.5,
+      "reinject": 0.5,
+      "slots_regen": 0.75,
+      "slots_copy": 0.917,
+      "slot_verbatim": 1
+    },
+    "preference": {
+      "neutral": 0.167,
+      "reinject": 0.167,
+      "slots_regen": 0.833,
+      "slots_copy": 1,
+      "slot_verbatim": 1
+    }
+  },
+  "avg": {
+    "neutral": 0.25,
+    "reinject": 0.479,
+    "slots_regen": 0.896,
+    "slots_copy": 0.979,
+    "slot_verbatim": 1
+  },
+  "copy_minus_neutral": {
+    "numeric": 0.917,
+    "entity": 0.75,
+    "negation": 0.417,
+    "preference": 0.833
+  },
+  "copy_minus_regen": {
+    "numeric": 0,
+    "entity": 0,
+    "negation": 0.167,
+    "preference": 0.167
+  }
+}

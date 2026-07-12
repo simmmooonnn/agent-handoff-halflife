@@ -1,0 +1,25 @@
+{
+  "tag": "gpt-5.4-mini",
+  "drop_h": 0.79,
+  "moat": 0.77,
+  "moat_ci": [
+    0.68,
+    0.86
+  ],
+  "verbatim_S_kmax": 0.94,
+  "gap4": 0.19,
+  "gap4_ci": [
+    0.1,
+    0.28
+  ],
+  "gap8": 0.13,
+  "gap8_ci": [
+    0.05,
+    0.21
+  ],
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true
+  }
+}

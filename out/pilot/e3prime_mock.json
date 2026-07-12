@@ -1,0 +1,80 @@
+{
+  "model": "mock",
+  "n": 8,
+  "K": 16,
+  "M": 24,
+  "B_ri": 4,
+  "theta": 0.35,
+  "budget": 25,
+  "probe_ks": [
+    4,
+    8,
+    16
+  ],
+  "arms": {
+    "a_star_edf": {
+      "strict_min": 0.5,
+      "mean": 0.875,
+      "min_ci": [
+        0.0,
+        1.0
+      ],
+      "per_type": {
+        "entity": 1.0,
+        "negation": 0.5,
+        "numeric": 1.0,
+        "preference": 1.0
+      }
+    },
+    "round_robin": {
+      "strict_min": 0.5,
+      "mean": 0.875,
+      "min_ci": [
+        0.0,
+        1.0
+      ],
+      "per_type": {
+        "entity": 1.0,
+        "negation": 0.5,
+        "numeric": 1.0,
+        "preference": 1.0
+      }
+    },
+    "random": {
+      "strict_min": 0.5,
+      "mean": 0.875,
+      "min_ci": [
+        0.0,
+        1.0
+      ],
+      "per_type": {
+        "entity": 1.0,
+        "negation": 0.5,
+        "numeric": 1.0,
+        "preference": 1.0
+      }
+    },
+    "pin_fixed": {
+      "strict_min": 0.5,
+      "mean": 0.875,
+      "min_ci": [
+        0.0,
+        1.0
+      ],
+      "per_type": {
+        "entity": 1.0,
+        "negation": 0.5,
+        "numeric": 1.0,
+        "preference": 1.0
+      }
+    }
+  },
+  "a_star_minus_best_baseline": {
+    "point": 0.0,
+    "ci": [
+      0.0,
+      0.0
+    ]
+  },
+  "gate_pass": false
+}

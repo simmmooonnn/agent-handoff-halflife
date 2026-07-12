@@ -1,0 +1,266 @@
+{
+  "Qwen2.5-7B-Instruct": {
+    "rows": [
+      {
+        "arm": "node",
+        "cls": "collapse",
+        "tau": 0.06,
+        "tau_ci": [
+          0.06,
+          0.06
+        ],
+        "f": 0.13
+      },
+      {
+        "arm": "rolecont",
+        "cls": "collapse",
+        "tau": 0.06,
+        "tau_ci": [
+          0.06,
+          0.06
+        ],
+        "f": 0.18
+      },
+      {
+        "arm": "persona",
+        "cls": "collapse",
+        "tau": 0.26,
+        "tau_ci": [
+          0.06,
+          0.36
+        ],
+        "f": 0.185
+      },
+      {
+        "arm": "distrust",
+        "cls": "preserve",
+        "tau": 0.61,
+        "tau_ci": [
+          0.4,
+          0.85
+        ],
+        "f": 0.39
+      },
+      {
+        "arm": "selfsumm",
+        "cls": "neutral",
+        "tau": 0.97,
+        "tau_ci": [
+          0.69,
+          1.29
+        ],
+        "f": 0.248
+      },
+      {
+        "arm": "handoff",
+        "cls": "neutral",
+        "tau": 1.91,
+        "tau_ci": [
+          1.39,
+          2.85
+        ],
+        "f": 0.119
+      },
+      {
+        "arm": "faithful",
+        "cls": "preserve",
+        "tau": 3.32,
+        "tau_ci": [
+          1.74,
+          12.53
+        ],
+        "f": 0.421
+      },
+      {
+        "arm": "neutral_long",
+        "cls": "neutral",
+        "tau": 4.99,
+        "tau_ci": [
+          2.61,
+          6.23
+        ],
+        "f": -0.2
+      }
+    ],
+    "tau_adjacent_disjoint": "2/7",
+    "min_preserve_floor": 0.39,
+    "max_collapse_floor": 0.185,
+    "floor_gap_preserve_minus_collapse": 0.205
+  },
+  "Mistral-7B-Instruct-v0.3": {
+    "rows": [
+      {
+        "arm": "handoff",
+        "cls": "neutral",
+        "tau": 1.83,
+        "tau_ci": [
+          1.42,
+          2.61
+        ],
+        "f": 0.077
+      },
+      {
+        "arm": "faithful",
+        "cls": "preserve",
+        "tau": 1.93,
+        "tau_ci": [
+          0.94,
+          4.55
+        ],
+        "f": 0.699
+      },
+      {
+        "arm": "persona",
+        "cls": "collapse",
+        "tau": 2.99,
+        "tau_ci": [
+          1.84,
+          5.57
+        ],
+        "f": 0.171
+      },
+      {
+        "arm": "neutral_long",
+        "cls": "neutral",
+        "tau": 3.15,
+        "tau_ci": [
+          2.48,
+          3.52
+        ],
+        "f": -0.2
+      },
+      {
+        "arm": "selfsumm",
+        "cls": "neutral",
+        "tau": 3.37,
+        "tau_ci": [
+          1.7,
+          13.96
+        ],
+        "f": 0.531
+      },
+      {
+        "arm": "distrust",
+        "cls": "preserve",
+        "tau": 3.38,
+        "tau_ci": [
+          1.43,
+          12.42
+        ],
+        "f": 0.487
+      },
+      {
+        "arm": "node",
+        "cls": "collapse",
+        "tau": 3.78,
+        "tau_ci": [
+          2.38,
+          5.37
+        ],
+        "f": -0.067
+      },
+      {
+        "arm": "rolecont",
+        "cls": "collapse",
+        "tau": 6.76,
+        "tau_ci": [
+          2.65,
+          8.23
+        ],
+        "f": -0.2
+      }
+    ],
+    "tau_adjacent_disjoint": "0/7",
+    "min_preserve_floor": 0.487,
+    "max_collapse_floor": 0.171,
+    "floor_gap_preserve_minus_collapse": 0.316
+  },
+  "Phi-3-medium-4k-instruct": {
+    "rows": [
+      {
+        "arm": "handoff",
+        "cls": "neutral",
+        "tau": 0.87,
+        "tau_ci": [
+          0.64,
+          1.25
+        ],
+        "f": 0.228
+      },
+      {
+        "arm": "persona",
+        "cls": "collapse",
+        "tau": 0.87,
+        "tau_ci": [
+          0.61,
+          1.24
+        ],
+        "f": 0.388
+      },
+      {
+        "arm": "distrust",
+        "cls": "preserve",
+        "tau": 1.24,
+        "tau_ci": [
+          0.03,
+          2.77
+        ],
+        "f": 0.713
+      },
+      {
+        "arm": "rolecont",
+        "cls": "collapse",
+        "tau": 1.25,
+        "tau_ci": [
+          0.73,
+          2.07
+        ],
+        "f": 0.472
+      },
+      {
+        "arm": "node",
+        "cls": "collapse",
+        "tau": 1.38,
+        "tau_ci": [
+          1.01,
+          1.89
+        ],
+        "f": 0.304
+      },
+      {
+        "arm": "faithful",
+        "cls": "preserve",
+        "tau": 1.82,
+        "tau_ci": [
+          0.01,
+          57.98
+        ],
+        "f": 0.793
+      },
+      {
+        "arm": "neutral_long",
+        "cls": "neutral",
+        "tau": 4.37,
+        "tau_ci": [
+          1.98,
+          14.94
+        ],
+        "f": 0.424
+      },
+      {
+        "arm": "selfsumm",
+        "cls": "neutral",
+        "tau": 6.14,
+        "tau_ci": [
+          2.25,
+          14.69
+        ],
+        "f": 0.241
+      }
+    ],
+    "tau_adjacent_disjoint": "0/7",
+    "min_preserve_floor": 0.713,
+    "max_collapse_floor": 0.472,
+    "floor_gap_preserve_minus_collapse": 0.241
+  }
+}

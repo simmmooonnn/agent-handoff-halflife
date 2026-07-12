@@ -1,0 +1,24 @@
+{
+  "note": "E5 DROPWATCH-S full contrast set on gpt-5.5, reconstructed from cache (0 misses, no API). Pre-registered PRIMARY = dropwatch_stance-pin_fair on STRICT-MIN (worst-type worst-hop); it FAILED. Additional contrasts + the MEAN estimand are EXPLORATORY, reported alongside, not swapped in as the gate.",
+  "strictmin_worst_type_worst_hop": {
+    "dropwatch_stance_minus_pin_fair": {"point": 0.074, "ci": [0.000, 0.160], "sig": "NS", "label": "PRE-REG PRIMARY -> FAIL"},
+    "pin_fair_faithful_minus_pin_fair": {"point": 0.117, "ci": [0.000, 0.240], "sig": "NS", "label": "simple rescue vs baseline"},
+    "dropwatch_stance_minus_dropwatch_esc": {"point": 0.076, "ci": [0.000, 0.200], "sig": "NS", "label": "stance lever"},
+    "pin_fair_faithful_minus_faithful_always": {"point": 0.119, "ci": [0.000, 0.240], "sig": "NS", "label": "re-injection adds to stance"},
+    "dropwatch_stance_minus_pin_fair_faithful": {"point": -0.040, "ci": [-0.200, 0.120], "sig": "NS", "label": "adaptive vs simple"}
+  },
+  "mean_over_types_worst_hop": {
+    "dropwatch_stance_minus_pin_fair": {"point": 0.175, "ci": [0.080, 0.260], "sig": "CI-excl-0"},
+    "pin_fair_faithful_minus_pin_fair": {"point": 0.218, "ci": [0.130, 0.300], "sig": "CI-excl-0", "label": "simple rescue ~2x baseline"},
+    "dropwatch_stance_minus_dropwatch_esc": {"point": 0.244, "ci": [0.170, 0.320], "sig": "CI-excl-0", "label": "STANCE LEVER = the big effect"},
+    "pin_fair_faithful_minus_faithful_always": {"point": 0.200, "ci": [0.120, 0.290], "sig": "CI-excl-0", "label": "re-injection ALSO composes"},
+    "dropwatch_stance_minus_pin_fair_faithful": {"point": -0.045, "ci": [-0.150, 0.060], "sig": "NS", "label": "adaptive does NOT beat simple"}
+  },
+  "findings": {
+    "1_rescue_real_on_mean": "Both levers compose and each is CI-excl-0 on mean: preservation STANCE (+0.244) and RE-INJECTION (+0.200). Combined (pin_fair_faithful) roughly doubles mean retention 0.22->0.44 on the hardest aggressive compressor.",
+    "2_adaptive_unnecessary": "dropwatch_stance - pin_fair_faithful = -0.045 NS (slightly negative) on BOTH estimands. The adaptive detector/escalation does NOT earn its keep on aggressive compressors: a simple fixed 'always re-inject + always preserve' does as well or better, at equal cost. Reason: on gpt-5.5 drops are ubiquitous (faithful_hop_frac 0.94), so there is nothing to save by escalating only-when-needed.",
+    "3_strictmin_gate_fails_for_all": "On the pre-registered worst-type worst-hop estimand, NOTHING clears CI-excl-0 on gpt-5.5, because numeric is crushed to ~0 for every policy even with the rescue (best numeric per_type = 0.20). Worst-case numeric on the most aggressive compressor is near-lossy in-band -> offload to external memory (Pillar-4).",
+    "4_unified_arc": "The RIGHT controller depends on repair-retention (oracle). High-oracle models (Qwen, gpt-5.4): repairs stick, drops targetable -> adaptive DROPWATCH earns its keep (E4 PASS). Low-oracle aggressive compressors (gpt-5.5, Sonnet): repairs need preservation STANCE and drops are ubiquitous -> just always-preserve + re-inject (simple), adaptivity superfluous."
+  },
+  "deliverable": "The rescue method is SIMPLE, not the adaptive DROPWATCH-S: on aggressive compressors, compress under a preservation stance AND re-inject key facts (both levers CI-excl-0 on mean, compose to ~2x). The mechanism (stance is the causal lever, salience-labeling is not; both levers compose) is the contribution. Honest limits: (a) adaptive detection unnecessary on such models; (b) worst-case numeric strict-min unrescuable in-band -> offload."
+}

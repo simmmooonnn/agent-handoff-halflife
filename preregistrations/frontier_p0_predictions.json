@@ -1,0 +1,31 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-06",
+  "experiment": "P0 FRONTIER cross-family: core decay curve + boundary-compression moat + faithful floor lever on two frontier API models (round-6 gap: all three existing families are 7B-class open models).",
+  "models": {
+    "anthropic/claude-sonnet-4-6": "frontier anchor, temperature=0",
+    "openai/gpt-5.4-mini": "recent (2026-03) OpenAI model run with reasoning_effort='none' + temperature=0, i.e. NON-reasoning mode, matching the plain greedy-summarization regime of every other family"
+  },
+  "design": "framing_sweep.py with conds=handoff,longctx,verbatim,faithful (+auto nofact); n=100 facts, M=8, budget=25, ks=0,1,2,4,8, seed=0, level=actionable, current (boundary) grader. Identical protocol/prompts/cache scheme as the Qwen/Mistral/Phi runs; only the backend differs.",
+  "answers_three_questions": {
+    "Q1_does_tau_exist_at_frontier": "handoff decays at all under M=8@25 pressure",
+    "Q2_does_the_moat_replicate": "handoff drop >> longctx drop at matched tokens; verbatim near-flat",
+    "Q3_does_the_floor_lever_transfer": "faithful sits above handoff at deep k (S4-gap estimand, matching round-6 practice; fitted floors on 5-pt grids reported but not load-bearing)"
+  },
+  "PRE-REGISTERED GATES (per model)": {
+    "G1_decay_exists": "handoff S(0) - S(8) >= 0.20. PASS -> tau_h is not a small-open-model artifact. FAIL -> run the pre-registered escalation (budget=12 and/or M=16) to re-enter the decay regime; 'frontier tau is longer' folds into the scaling narrative and is NOT a paper failure.",
+    "G2_moat": "(handoff drop) - (longctx drop) >= 0.20 AND verbatim S(8) >= 0.90. PASS -> boundary-compression moat holds at frontier. FAIL on a decaying model -> moat is scale-limited; must be scoped honestly (most damaging outcome; judged unlikely given 3/3 open families).",
+    "G3_floor_lever": "faithful S(4) - handoff S(4) >= 0.10 (also report the S(8) gap). PASS -> Moat-2 lever transfers to frontier. FAIL while G1 passes -> stance lever is scale-limited; scope statement."
+  },
+  "predictions": {
+    "sonnet": "decays but slower than 7B-class (tau ~2-6 vs Qwen ~1.5); moat replicates (longctx drop <= 0.10); faithful S4 gap +0.10..0.35",
+    "gpt54mini": "similar or slightly weaker retention than sonnet; same qualitative pattern",
+    "biggest_risk": "G1 FAIL on one or both (frontier models may keep all 8 facts under a 25-word budget by aggressive enumeration) -> escalation path pre-registered above; second risk: budget-overflow behavior differs (frontier models may ignore the word budget), so report mean carry length vs budget (slack) alongside"
+  },
+  "honest_notes": [
+    "API decoding is best-effort deterministic (temperature=0); provider-side nondeterminism possible; cache stores the first sample, so all analyses are internally consistent.",
+    "gpt-5.4-mini is evaluated in non-reasoning mode by design; reasoning-mode handoff behavior is a separate question, out of scope here.",
+    "Cost estimate ~USD 20 (sonnet) + ~USD 2 (gpt-5.4-mini), ~5500 generations per model, serial."
+  ],
+  "planned_next_if_pass": "P1 = DROPWATCH gate + N2 natural chain on the cheaper frontier model; P2 = E1 externality."
+}

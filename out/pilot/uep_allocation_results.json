@@ -1,0 +1,312 @@
+{
+  "models": {
+    "Qwen2.5-7B-Instruct": {
+      "kmax": 4,
+      "cal_type_surv": {
+        "entity": 0.308,
+        "negation": 0.538,
+        "numeric": 0,
+        "preference": 0
+      },
+      "n_test": 48,
+      "curves": {
+        "0.0": {
+          "none": 0.25,
+          "random": 0.25,
+          "folk_numbers": 0.25,
+          "measured_greedy": 0.25,
+          "oracle": 0.25
+        },
+        "0.1": {
+          "none": 0.25,
+          "random": 0.33,
+          "folk_numbers": 0.333,
+          "measured_greedy": 0.333,
+          "oracle": 0.354
+        },
+        "0.2": {
+          "none": 0.25,
+          "random": 0.405,
+          "folk_numbers": 0.438,
+          "measured_greedy": 0.438,
+          "oracle": 0.458
+        },
+        "0.3": {
+          "none": 0.25,
+          "random": 0.47,
+          "folk_numbers": 0.5,
+          "measured_greedy": 0.5,
+          "oracle": 0.542
+        },
+        "0.4": {
+          "none": 0.25,
+          "random": 0.546,
+          "folk_numbers": 0.562,
+          "measured_greedy": 0.583,
+          "oracle": 0.646
+        },
+        "0.5": {
+          "none": 0.25,
+          "random": 0.623,
+          "folk_numbers": 0.646,
+          "measured_greedy": 0.667,
+          "oracle": 0.75
+        }
+      },
+      "measured_minus_folk_avg": 0.007,
+      "measured_minus_random_avg": 0.024,
+      "measured_gap_to_oracle_avg": 0.038
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "kmax": 4,
+      "cal_type_surv": {
+        "entity": 0.231,
+        "negation": 0.462,
+        "numeric": 0.231,
+        "preference": 0.077
+      },
+      "n_test": 48,
+      "curves": {
+        "0.0": {
+          "none": 0.146,
+          "random": 0.146,
+          "folk_numbers": 0.146,
+          "measured_greedy": 0.146,
+          "oracle": 0.146
+        },
+        "0.1": {
+          "none": 0.146,
+          "random": 0.236,
+          "folk_numbers": 0.25,
+          "measured_greedy": 0.25,
+          "oracle": 0.25
+        },
+        "0.2": {
+          "none": 0.146,
+          "random": 0.325,
+          "folk_numbers": 0.354,
+          "measured_greedy": 0.354,
+          "oracle": 0.354
+        },
+        "0.3": {
+          "none": 0.146,
+          "random": 0.395,
+          "folk_numbers": 0.438,
+          "measured_greedy": 0.438,
+          "oracle": 0.438
+        },
+        "0.4": {
+          "none": 0.146,
+          "random": 0.482,
+          "folk_numbers": 0.5,
+          "measured_greedy": 0.542,
+          "oracle": 0.542
+        },
+        "0.5": {
+          "none": 0.146,
+          "random": 0.571,
+          "folk_numbers": 0.583,
+          "measured_greedy": 0.646,
+          "oracle": 0.646
+        }
+      },
+      "measured_minus_folk_avg": 0.018,
+      "measured_minus_random_avg": 0.037,
+      "measured_gap_to_oracle_avg": 0.0
+    },
+    "Phi-3-medium-4k-instruct": {
+      "kmax": 4,
+      "cal_type_surv": {
+        "entity": 0.385,
+        "negation": 0.692,
+        "numeric": 0,
+        "preference": 0
+      },
+      "n_test": 48,
+      "curves": {
+        "0.0": {
+          "none": 0.208,
+          "random": 0.208,
+          "folk_numbers": 0.208,
+          "measured_greedy": 0.208,
+          "oracle": 0.208
+        },
+        "0.1": {
+          "none": 0.208,
+          "random": 0.291,
+          "folk_numbers": 0.271,
+          "measured_greedy": 0.292,
+          "oracle": 0.312
+        },
+        "0.2": {
+          "none": 0.208,
+          "random": 0.373,
+          "folk_numbers": 0.375,
+          "measured_greedy": 0.375,
+          "oracle": 0.417
+        },
+        "0.3": {
+          "none": 0.208,
+          "random": 0.439,
+          "folk_numbers": 0.438,
+          "measured_greedy": 0.458,
+          "oracle": 0.5
+        },
+        "0.4": {
+          "none": 0.208,
+          "random": 0.521,
+          "folk_numbers": 0.479,
+          "measured_greedy": 0.562,
+          "oracle": 0.604
+        },
+        "0.5": {
+          "none": 0.208,
+          "random": 0.603,
+          "folk_numbers": 0.562,
+          "measured_greedy": 0.667,
+          "oracle": 0.708
+        }
+      },
+      "measured_minus_folk_avg": 0.038,
+      "measured_minus_random_avg": 0.021,
+      "measured_gap_to_oracle_avg": 0.031
+    },
+    "gpt-5.4-mini": {
+      "kmax": 8,
+      "cal_type_surv": {
+        "entity": 0,
+        "negation": 0.538,
+        "numeric": 0,
+        "preference": 0
+      },
+      "n_test": 48,
+      "curves": {
+        "0.0": {
+          "none": 0.167,
+          "random": 0.167,
+          "folk_numbers": 0.167,
+          "measured_greedy": 0.167,
+          "oracle": 0.167
+        },
+        "0.1": {
+          "none": 0.167,
+          "random": 0.254,
+          "folk_numbers": 0.271,
+          "measured_greedy": 0.271,
+          "oracle": 0.271
+        },
+        "0.2": {
+          "none": 0.167,
+          "random": 0.34,
+          "folk_numbers": 0.375,
+          "measured_greedy": 0.375,
+          "oracle": 0.375
+        },
+        "0.3": {
+          "none": 0.167,
+          "random": 0.408,
+          "folk_numbers": 0.458,
+          "measured_greedy": 0.458,
+          "oracle": 0.458
+        },
+        "0.4": {
+          "none": 0.167,
+          "random": 0.497,
+          "folk_numbers": 0.521,
+          "measured_greedy": 0.562,
+          "oracle": 0.562
+        },
+        "0.5": {
+          "none": 0.167,
+          "random": 0.585,
+          "folk_numbers": 0.604,
+          "measured_greedy": 0.646,
+          "oracle": 0.667
+        }
+      },
+      "measured_minus_folk_avg": 0.014,
+      "measured_minus_random_avg": 0.038,
+      "measured_gap_to_oracle_avg": 0.004
+    },
+    "claude-sonnet-4-6": {
+      "kmax": 8,
+      "cal_type_surv": {
+        "entity": 0.308,
+        "negation": 0.615,
+        "numeric": 0,
+        "preference": 0.077
+      },
+      "n_test": 48,
+      "curves": {
+        "0.0": {
+          "none": 0.292,
+          "random": 0.292,
+          "folk_numbers": 0.292,
+          "measured_greedy": 0.292,
+          "oracle": 0.292
+        },
+        "0.1": {
+          "none": 0.292,
+          "random": 0.368,
+          "folk_numbers": 0.396,
+          "measured_greedy": 0.396,
+          "oracle": 0.396
+        },
+        "0.2": {
+          "none": 0.292,
+          "random": 0.443,
+          "folk_numbers": 0.5,
+          "measured_greedy": 0.5,
+          "oracle": 0.5
+        },
+        "0.3": {
+          "none": 0.292,
+          "random": 0.497,
+          "folk_numbers": 0.583,
+          "measured_greedy": 0.583,
+          "oracle": 0.583
+        },
+        "0.4": {
+          "none": 0.292,
+          "random": 0.569,
+          "folk_numbers": 0.646,
+          "measured_greedy": 0.667,
+          "oracle": 0.688
+        },
+        "0.5": {
+          "none": 0.292,
+          "random": 0.648,
+          "folk_numbers": 0.688,
+          "measured_greedy": 0.771,
+          "oracle": 0.792
+        }
+      },
+      "measured_minus_folk_avg": 0.017,
+      "measured_minus_random_avg": 0.065,
+      "measured_gap_to_oracle_avg": 0.007
+    }
+  },
+  "summary": {
+    "measured_minus_folk_avg": {
+      "Qwen2.5-7B-Instruct": 0.007,
+      "Mistral-7B-Instruct-v0.3": 0.018,
+      "Phi-3-medium-4k-instruct": 0.038,
+      "gpt-5.4-mini": 0.014,
+      "claude-sonnet-4-6": 0.017
+    },
+    "measured_minus_random_avg": {
+      "Qwen2.5-7B-Instruct": 0.024,
+      "Mistral-7B-Instruct-v0.3": 0.037,
+      "Phi-3-medium-4k-instruct": 0.021,
+      "gpt-5.4-mini": 0.038,
+      "claude-sonnet-4-6": 0.065
+    },
+    "measured_gap_to_oracle_avg": {
+      "Qwen2.5-7B-Instruct": 0.038,
+      "Mistral-7B-Instruct-v0.3": 0.0,
+      "Phi-3-medium-4k-instruct": 0.031,
+      "gpt-5.4-mini": 0.004,
+      "claude-sonnet-4-6": 0.007
+    }
+  }
+}

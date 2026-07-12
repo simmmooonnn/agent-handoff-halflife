@@ -1,0 +1,36 @@
+{
+  "n_instances": 1300,
+  "base_rate": 0.363,
+  "brier_probe": 0.176,
+  "brier_baserate": 0.2313,
+  "skill_score": 0.239,
+  "ECE": 0.044,
+  "reliability": [
+    {
+      "conf": 0.165,
+      "obs": 0.155,
+      "n": 600
+    },
+    {
+      "conf": 0.277,
+      "obs": 0.327,
+      "n": 300
+    },
+    {
+      "conf": 0.466,
+      "obs": 0.62,
+      "n": 200
+    },
+    {
+      "conf": 0.72,
+      "obs": 0.7,
+      "n": 100
+    },
+    {
+      "conf": 0.832,
+      "obs": 0.87,
+      "n": 100
+    }
+  ],
+  "note": "PredictaBoard-style per-instance scoring of the 2-hop probe as a survival-probability forecast. Skill>0 means it beats predicting the global base rate; ECE is mean calibration gap."
+}

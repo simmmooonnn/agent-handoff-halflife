@@ -1,0 +1,62 @@
+{
+  "model": "gpt-5.4-mini",
+  "n_docs": 16,
+  "n_facts": 64,
+  "budget": 40,
+  "ks": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "chance_nofact": 0.042,
+  "chance_nofact_negation_secondary": 1,
+  "gate_types": "numeric/entity/preference (48 probes); negation secondary",
+  "handoff": {
+    "S": [
+      1,
+      0.896,
+      0.792,
+      0.688,
+      0.688
+    ],
+    "tau": 2.087,
+    "r2": 0.98,
+    "f": 0.665
+  },
+  "faithful": {
+    "S": [
+      1,
+      0.896,
+      0.896,
+      0.771,
+      0.771
+    ]
+  },
+  "handoff_negation_secondary": {
+    "S": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "longctx": {
+    "S": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "gates": {
+    "G1_decay_exists": true,
+    "G2_moat": true,
+    "G3_facts_not_parametric": true,
+    "G4_faithful_lifts_deep_k": false
+  },
+  "verdict": "NATURAL PASS: tau_h and the moat exist for natural prose facts"
+}

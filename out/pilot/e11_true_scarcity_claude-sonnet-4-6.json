@@ -1,0 +1,42 @@
+{
+  "model": "claude-sonnet-4-6",
+  "M": 28,
+  "K": 4,
+  "C": 10,
+  "budget": 25,
+  "P": 10,
+  "total": {
+    "free_text": 0.118,
+    "mem0": 0.571,
+    "ledger_folk": 0.461,
+    "ledger_measured": 0.532
+  },
+  "per_type": {
+    "free_text": {
+      "entity": 0,
+      "negation": 0.471,
+      "numeric": 0,
+      "preference": 0
+    },
+    "mem0": {
+      "entity": 0.129,
+      "negation": 0.671,
+      "numeric": 0.9,
+      "preference": 0.586
+    },
+    "ledger_folk": {
+      "entity": 0.143,
+      "negation": 0.557,
+      "numeric": 1,
+      "preference": 0.143
+    },
+    "ledger_measured": {
+      "entity": 0.486,
+      "negation": 0.543,
+      "numeric": 0.614,
+      "preference": 0.486
+    }
+  },
+  "measured_minus_mem0": -0.039,
+  "measured_minus_folk": 0.071
+}

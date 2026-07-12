@@ -1,0 +1,14 @@
+{
+  "note": "Mechanistic evidence for the DROPWATCH retention axis (why gpt-5.4 PASS but gpt-5.5/mini FAIL). Measured on numeric probes under pin_oracle (fact re-injected at the FRONT of the carry EVERY hop = maximal repair). Read from cache, no API calls.",
+  "measured": {
+    "gpt-5.4": {"hop4": {"answer_in_carry": 0.68, "answered_correctly": 0.68},
+                 "hop8": {"answer_in_carry": 0.68, "answered_correctly": 0.68},
+                 "hop16": {"answer_in_carry": 0.72, "answered_correctly": 0.72}},
+    "gpt-5.5": {"hop4": {"answer_in_carry": 0.20, "answered_correctly": 0.20},
+                 "hop8": {"answer_in_carry": 0.24, "answered_correctly": 0.24},
+                 "hop16": {"answer_in_carry": 0.24, "answered_correctly": 0.24}}
+  },
+  "finding_1_repairs_dont_stick_on_gpt55": "Even when the numeric fact is re-stated at the front of the carry EVERY hop (pin_oracle = maximal repair), gpt-5.5 retains it in only ~20% of numeric facts vs gpt-5.4's ~68%. gpt-5.5 compresses re-injected detail away despite being handed the value each hop -> repairs literally cannot stick -> DROPWATCH (and any repair-based method) has no lever. This is the aggressive-compressor mechanism, now confirmed at aggregate (a single lucky probe, 'budget ceiling 7311', was kept by BOTH models and did NOT show it -- the 25-probe aggregate does).",
+  "finding_2_carry_presence_equals_answering": "answer_in_carry == answered_correctly to two decimals on BOTH models (0.68=0.68, 0.20=0.20). Retention is fully explained by whether the string survives in the carry text; there is no present-but-unanswered gap. This independently validates the R1.4 premise DROPWATCH's zero-model-call detector rests on: fact death IS visible in the carry.",
+  "honesty_trail": "First single-probe trace CONTRADICTED the hypothesis (both models kept 7311). Rather than spin the anecdote, ran the 25-probe aggregate, which confirmed it. Scripts: dropwatch_carry_probe.py (trace), dropwatch_carry_agg.py (aggregate)."
+}

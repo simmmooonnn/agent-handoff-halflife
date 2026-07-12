@@ -1,0 +1,13 @@
+{
+  "note": "DROPWATCH cross-family map (assembled 2026-07-07). Ordering axis is NOT model capability (non-monotone) but REPAIR-RETENTION: pin_oracle strict-min = how well the model holds a fact that is re-stated every hop. DROPWATCH's online targeting beats blanket fixed pinning EXACTLY when repairs stick (high oracle). This supersedes the premature 'monotone-with-capability' reading (falsified by gpt-5.4).",
+  "regime": "M=24 mixed-type, K=16, budget=25, B_ri=4, theta=0.35, n=100, strict-min estimand, paired-over-facts bootstrap.",
+  "rows_sorted_by_oracle": [
+    {"model": "gpt-5.4",        "oracle_strictmin": 0.680, "dropwatch_esc_strictmin": 0.360, "pin_fair_strictmin": 0.000, "dwesc_minus_pinfair": 0.291, "ci": [0.16, 0.40], "cost": 3.75, "gate": "PASS"},
+    {"model": "Qwen2.5-7B",     "oracle_strictmin": 0.680, "dropwatch_esc_strictmin": 0.280, "pin_fair_strictmin": 0.080, "dwesc_minus_pinfair": 0.175, "ci": [0.04, 0.32], "cost": 3.75, "gate": "PASS"},
+    {"model": "gpt-5.4-mini",   "oracle_strictmin": 0.360, "dropwatch_esc_strictmin": 0.080, "pin_fair_strictmin": 0.000, "dwesc_minus_pinfair": 0.040, "ci": [0.00, 0.12], "cost": 3.75, "gate": "BOUNDARY_FAIL"},
+    {"model": "gpt-5.5",        "oracle_strictmin": 0.200, "dropwatch_esc_strictmin": 0.000, "pin_fair_strictmin": 0.000, "dwesc_minus_pinfair": 0.000, "ci": [0.00, 0.00], "cost": 3.75, "gate": "FAIL"}
+  ],
+  "finding": "The DROPWATCH advantage over a-priori fair pinning is monotone in repair-retention (oracle strict-min), not in capability. Precondition for the method: repaired facts must survive to the next hop. When forgetting is fast AND uniform (gpt-5.5), reactive repair is whack-a-mole and constant blanket pinning wins; oracle strict-min is a cheap pre-flight test of whether DROPWATCH will help.",
+  "honest_correction": "An earlier 3-point reading (Qwen>mini>gpt-5.5) looked monotone-decreasing in capability; gpt-5.4 (full) PASSING at +0.291 falsifies that. Reporting the full pre-registered set (report-ALL rule, commit a079150) is what caught it.",
+  "cost_note": "dropwatch/dropwatch_esc cost_per_hop = 3.75 < B_ri=4.0 on ALL four models -> event-driven quiescence is universal even where the accuracy gate fails."
+}

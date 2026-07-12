@@ -1,0 +1,25 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-10",
+  "experiment": "UEP-LIVE (MEDIUM PRESSURE): re-run the end-to-end measurement-driven out-of-band allocation on a Sonnet pipeline at a LOWER contention regime (M=12, K=4) so the four fact types retain a real fragility GRADIENT, instead of the M=24/K=8 collapse where every type except negation died (numeric 0, entity .014, preference .028, negation .514).",
+  "why": "The M=24/K=8 run landed PARTIAL: measured_greedy > random and near-oracle at every phi, but only >= folk_numbers at high phi. Diagnosed cause: at extreme pressure fragility collapses to near-binary (negation alive, rest dead) -> no per-type ORDERING signal for measurement to exploit, so folk 'protect numbers' ties it at low budget. This is the regime LEAST favorable to a ranking-based method. A ranking method must be tested where a ranking exists. This is NOT loosening the estimand (unchanged) — it is testing the method on a fair, gradient-bearing regime.",
+  "design": "Sonnet, temp=0. C=12 chains, each carries M=12 mixed facts (3 per type) through K=4 neutral handoff hops (budget=25). At depth K, query ALL 12 facts -> per-fact in-band survival. Out-of-band store holds protected facts' values (answered from the store => correct by construction). Allocation policies pick which B=phi*M facts per chain to protect, with LEAVE-ONE-CHAIN-OUT per-type calibration for measured_greedy.",
+  "policies_per_phi": {
+    "none": "no protection.",
+    "random": "protect random B facts/chain (avg over draws).",
+    "folk_numbers": "protect numeric facts first.",
+    "measured_greedy": "protect the types with lowest survival first, using per-type survival MEASURED on the OTHER chains (leave-one-out). [OURS]",
+    "oracle": "protect the actually-dead facts first (upper bound)."
+  },
+  "phis": [0.0, 0.125, 0.25, 0.375, 0.5],
+  "PRE_REGISTERED_READOUT": {
+    "CONFIRMS": "With a real fragility gradient present (types spread across (0,1), not all-dead), measured_greedy >= folk_numbers at EVERY phi and > random, approaching oracle. -> the ranking-based allocation delivers its edge precisely when a non-trivial ranking exists; the M=24 tie was a collapsed-gradient artifact, not a method failure.",
+    "PARTIAL": "measured_greedy > random and near oracle, but STILL only ~ folk_numbers even with a gradient (numeric happens to dominate fragility here too) -> honest: on Sonnet numbers are simply always worst, so folk is a strong heuristic on THIS model; measurement's model-dependence claim must lean on the OTHER models (Mistral/Phi where preference is worst).",
+    "CONTRADICTS": "measured_greedy ~ random even with a gradient -> the calibration signal does not transfer across chains live; report and rethink."
+  },
+  "predictions": {
+    "point": "At M=12/K=4 expect a gradient roughly numeric < entity < preference < negation, all meaningfully inside (0,1). measured_greedy tracks oracle, beats random at every phi, and >= folk_numbers at every phi (edge no longer confined to high phi, because now there is an orderable second-worst type at every budget level).",
+    "risk": "If Sonnet's numeric type is so dominant that it is the ONLY dead type even at K=4, folk stays tied and we land PARTIAL again; the model-dependence of the ranking would then be carried by the cross-model simulation, not this single live model.",
+    "honest_limits": "single live model (Sonnet); 12 chains modest n; protected-removed-from-carry contention benefit still deferred; temp=0 single sample per fact."
+  }
+}

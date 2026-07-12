@@ -1,0 +1,81 @@
+{
+  "model": "gpt-5.5",
+  "regime": {
+    "M": 24,
+    "B_ri": 4,
+    "K": 16,
+    "budget": 25,
+    "n_numeric": 25
+  },
+  "stances": {
+    "neutral": {
+      "carry_survival_by_hop": {
+        "4": 0.04,
+        "8": 0.04,
+        "16": 0.08
+      },
+      "answered_by_hop": {
+        "4": 0.04,
+        "8": 0.04,
+        "16": 0.08
+      },
+      "min_hop_carry_survival": 0.04,
+      "min_hop_ci": [
+        0.0,
+        0.12
+      ]
+    },
+    "faithful": {
+      "carry_survival_by_hop": {
+        "4": 0.52,
+        "8": 0.56,
+        "16": 0.56
+      },
+      "answered_by_hop": {
+        "4": 0.52,
+        "8": 0.56,
+        "16": 0.56
+      },
+      "min_hop_carry_survival": 0.52,
+      "min_hop_ci": [
+        0.32,
+        0.72
+      ]
+    },
+    "ledger": {
+      "carry_survival_by_hop": {
+        "4": 0.28,
+        "8": 0.32,
+        "16": 0.36
+      },
+      "answered_by_hop": {
+        "4": 0.28,
+        "8": 0.32,
+        "16": 0.36
+      },
+      "min_hop_carry_survival": 0.28,
+      "min_hop_ci": [
+        0.12,
+        0.48
+      ]
+    },
+    "salience": {
+      "carry_survival_by_hop": {
+        "4": 0.04,
+        "8": 0.08,
+        "16": 0.08
+      },
+      "answered_by_hop": {
+        "4": 0.04,
+        "8": 0.08,
+        "16": 0.08
+      },
+      "min_hop_carry_survival": 0.04,
+      "min_hop_ci": [
+        0.0,
+        0.121
+      ]
+    }
+  },
+  "verdict": "RESCUE_EXISTS: 'faithful' lifts ceiling to 0.52 (CI-lo 0.32 > neutral 0.04)"
+}

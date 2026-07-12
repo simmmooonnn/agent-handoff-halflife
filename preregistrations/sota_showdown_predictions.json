@@ -1,0 +1,18 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-10",
+  "experiment": "SOTA SHOWDOWN (reveal-failure-and-fix): on the iterated-summarization axis nobody measures, does the DEPLOYED SOTA memory strategy (Mem0-style LLM extract+merge each hop) preserve a planted NUMBER across K handoffs? Compare vs naive free-text re-summarization and vs OURS (measurement-driven protected slot, budget-exempt). Metric: numeric exact-match survival vs hops k; fit handoff half-life tau_h per method. Verbatim external store (Zep-upper-bound / arXiv 2601.00821) = 1.0 by construction (analytic reference).",
+  "sota_fidelity": "Mem0 re-impl follows the scouted recipe (arXiv 2504.19413, mem0/configs/prompts.py): per hop an LLM EXTRACTs salient facts as NL strings (FACT_RETRIEVAL_PROMPT paraphrase) and MERGEs via ADD/UPDATE/DELETE (DEFAULT_UPDATE_MEMORY_PROMPT paraphrase) into a bounded running memory. The number is routed THROUGH the extractor (regeneration), never copied -- the drift mechanism (arXiv 2601.03640) we test. Mem0 is the scout-designated MOST-IMPORTANT baseline (canonical extraction memory); Zep is same regeneration class (strongest, cited not re-impl). LLMLingua-2 = verbatim/extractive class (cited).",
+  "design": "Sonnet, temp=0. type=numeric (the crux), PROBES=12 probes, NDIST=7 mixed distractors, budget=25 words, k in {0,2,4,6,8}. Methods: free_text (relay neutral) / mem0 (extract+merge memory) / ours_slot (protected [SLOTS] copy). Same probe+distractors across methods.",
+  "metric": "primary = numeric exact-match survival (grade actionable) vs k, tau_h per method; verbatim-store reference = 1.0. (LLM-judge secondary deferred; grade is already exact-match style.)",
+  "PRE_REGISTERED_READOUT": {
+    "REVEALS_AND_FIXES": "mem0 numeric survival DECAYS with k (short tau_h, approaching free_text) while ours_slot stays high (long/flat tau_h, ~ verbatim-store 1.0). -> deployed SOTA extraction memory does NOT solve number survival across handoffs because it regenerates; our in-band budget-exempt slot does, without external infra. HEADLINE.",
+    "SOTA_ALREADY_WORKS": "mem0 stays high across k (structured fact-list preserves the number like our slots_regen did) -> honest: SOTA structured memory already largely preserves a single number; our contribution narrows to (a) measurement-driven allocation under SCARCE budget (e7, confirmed) and (b) the mechanism decomposition (exemption vs regeneration). Report without overclaiming a survival win.",
+    "BOTH_DECAY": "both mem0 and ours_slot decay with k -> even a protected slot erodes in this regime; re-examine the slot instruction / whether ours holds only at the single-fact scale. Fall back to allocation + out-of-band necessity."
+  },
+  "predictions": {
+    "point": "free_text decays fast (tau_h ~1-2, numeric near 0 by k=6). mem0 decays too but slower than free_text (fact-list format helps a little) yet still well below ours by k=6-8. ours_slot ~ flat near 1.0 (budget-exempt). Expected ordering at k=8: ours >> mem0 > free_text.",
+    "risk": "Mem0's fact-list format may preserve a SINGLE salient number surprisingly well (as slots_regen did) -> mem0 may not decay much, weakening the survival headline (then SOTA_ALREADY_WORKS). n=12/point, temp=0 single sample -> directional tau_h, not tight CIs. tau fit is floor-less (rough summary).",
+    "honest_limits": "single model (Sonnet); numeric only in this first cut (4-type breadth is a follow-up); Mem0 re-impl is a faithful minimal version, not the full library (no vector DB / top-k retrieval -- but with one salient fact retrieval is not the bottleneck; the extract/merge regeneration is). Zep not re-implemented (cited as same class)."
+  }
+}

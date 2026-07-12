@@ -1,0 +1,76 @@
+{
+  "C9_shape_and_halflife": {
+    "rows": [
+      {
+        "budget": 8,
+        "exp_tau": 0.537,
+        "stretched_s": 1.344,
+        "emp_halflife_kS0.5": 0.651
+      },
+      {
+        "budget": 16,
+        "exp_tau": 0.999,
+        "stretched_s": 1.784,
+        "emp_halflife_kS0.5": 0.976
+      },
+      {
+        "budget": 25,
+        "exp_tau": 1.482,
+        "stretched_s": 1.643,
+        "emp_halflife_kS0.5": 1.481
+      },
+      {
+        "budget": 50,
+        "exp_tau": 2.394,
+        "stretched_s": 2.726,
+        "emp_halflife_kS0.5": 2.714
+      }
+    ],
+    "beta_exp_tau": 0.819,
+    "beta_empirical_halflife": 0.788,
+    "note": "s>1 on most arms -> early decay faster than exp; if beta_hl ~ beta_exp the budget law is robust to the shape choice."
+  },
+  "C11_fixed_k_length_control": {
+    "persona_S": [
+      0.91,
+      0.2,
+      0.19,
+      0.18
+    ],
+    "neutral_long_S": [
+      0.91,
+      0.8,
+      0.5,
+      0.32
+    ],
+    "dS_k2": 0.31,
+    "dS_k4": 0.14,
+    "note": "Observed length-control contrast at matched depth (both directly measured) replaces the censored tau-ratio. neutral_long retains far more than persona at every k -> prompt-length works OPPOSITE to collapse."
+  },
+  "C8_beta_weighted_envelope": {
+    "beta_unweighted": 0.82,
+    "beta_logvar_weighted": 0.806,
+    "per_point_log_tau_sd": [
+      0.158,
+      0.108,
+      0.094,
+      0.108
+    ],
+    "cross_family_envelope": {
+      "Phi3-medium": 1.5,
+      "Mistral-7B": 0.38,
+      "Qwen-7B": 0.82
+    },
+    "flag": "point/weighted only; a valid slope CI needs a PAIRED-over-facts bootstrap (resample fact indices once, apply to all budget cells) \u2014 requires the Anvil per-fact verdict rows, not in the local cache."
+  },
+  "P6_capacity_arithmetic": {
+    "n_cells": 12,
+    "beta_B": 0.856,
+    "mu_M": -0.558,
+    "arithmetic_null_needs": "beta == -mu (i.e. tau=f(B/M) only)",
+    "beta_plus_mu": 0.297,
+    "r2_full_BM": 0.935,
+    "r2_ratio_only": 0.899,
+    "flag": "point estimates only; CIs on beta,mu need a paired-over-facts bootstrap of the grid (Anvil per-fact rows). beta+mu far from 0 => not pure arithmetic, but state as suggestive until CIs land."
+  }
+}

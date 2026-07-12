@@ -1,0 +1,50 @@
+{
+  "model": "claude-sonnet-4-6",
+  "temp": "0.7",
+  "K": 2,
+  "M": 24,
+  "B_ri": 4,
+  "R_values": [
+    1,
+    2,
+    3
+  ],
+  "probe_ks": [
+    2
+  ],
+  "n_per_type": {
+    "numeric": 2,
+    "entity": 0
+  },
+  "by_type": {
+    "numeric": {
+      "k2": {
+        "single_p": 0.0,
+        "R": {
+          "1": {
+            "single_mean": 0.0,
+            "union": 0.0,
+            "majority": 0.0,
+            "indep_pred_union": 0.0,
+            "union_minus_pred": 0.0
+          },
+          "2": {
+            "single_mean": 0.0,
+            "union": 0.0,
+            "majority": 0.0,
+            "indep_pred_union": 0.0,
+            "union_minus_pred": 0.0
+          },
+          "3": {
+            "single_mean": 0.0,
+            "union": 0.0,
+            "majority": 0.0,
+            "indep_pred_union": 0.0,
+            "union_minus_pred": 0.0
+          }
+        }
+      }
+    }
+  },
+  "verdict": "IMPOSSIBILITY: numeric union@R3=0.00 ~ single p=0.00, flat in R -> cross-chain erasures CORRELATED"
+}

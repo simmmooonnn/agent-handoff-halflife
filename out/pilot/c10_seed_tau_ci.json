@@ -1,0 +1,95 @@
+{
+  "ks": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "B": 2000,
+  "arms": {
+    "handoff": {
+      "ks": [
+        0,
+        1,
+        2,
+        4,
+        8
+      ],
+      "sampling_mean_S": [
+        0.91,
+        0.603,
+        0.313,
+        0.207,
+        0.177
+      ],
+      "tau_median_seedinflated": 1.517,
+      "tau_ci_seedinflated": [
+        1.179,
+        1.883
+      ]
+    },
+    "manifest": {
+      "ks": [
+        0,
+        1,
+        2,
+        4,
+        8
+      ],
+      "sampling_mean_S": [
+        0.913,
+        0.813,
+        0.69,
+        0.613,
+        0.62
+      ],
+      "tau_median_seedinflated": 2.02,
+      "tau_ci_seedinflated": [
+        1.279,
+        4.416
+      ]
+    },
+    "ledger": {
+      "ks": [
+        0,
+        1,
+        2,
+        4,
+        8
+      ],
+      "sampling_mean_S": [
+        0.91,
+        0.2,
+        0.187,
+        0.167,
+        0.16
+      ],
+      "tau_median_seedinflated": 0.31,
+      "tau_ci_seedinflated": [
+        0.05,
+        0.443
+      ]
+    },
+    "node": {
+      "ks": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "sampling_mean_S": [
+        0.927,
+        0.133,
+        0.13,
+        0.13
+      ],
+      "tau_median_seedinflated": 0.065,
+      "tau_ci_seedinflated": [
+        0.062,
+        0.272
+      ]
+    }
+  },
+  "flag": "CI reflects facts x 3-sampling-seed variance for these anchor arms; greedy per-fact rows not in local cache, so this is the fully-sampled band (mildly wider than greedy+seed). Propagating to the budget beta and every framing cell needs Anvil per-fact seed rows across all cells."
+}

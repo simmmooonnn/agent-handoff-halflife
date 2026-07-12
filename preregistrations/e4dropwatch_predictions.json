@@ -1,0 +1,25 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-06",
+  "experiment": "E4 DROPWATCH -- closed-loop drop-detection + adaptive pinning (e4dropwatch.py)",
+  "regime": "E3-prime overload: M=24 mixed-type, B_ri=4 slots/hop, K=16, budget=25, neutral handoff, Qwen2.5-7B, n=100, probe_ks=[4,8,16]",
+  "design_rationale": "The tau-aware TIMING scheduler failed 3x because timing is the wrong axis in a front-loaded, floor-dominated, externality-free channel. E3-prime's winner pin_fixed needs the vulnerable subset a priori, but the newstance FAIL proves vulnerability is not text-predictable. DROPWATCH learns the subset online from deterministic zero-model-call drop observations on the carry (validity: R1.4 content-visibility). Correctness preconditions are the paper's measured laws: front-loading bounds watchdog cost; E1 makes repairs safe; slack means repairs fit.",
+  "policies": ["pin_oracle (probe@0 always pinned, inflated upper anchor)", "pin_fair (seeded random B_ri subset per chain, probe by chance 1/6 -- THE gate baseline)", "random", "a_star_edf", "dropwatch (repair-on-drop)", "dropwatch_esc (repair + 2nd-drop escalates to pinned)"],
+  "PRIMARY_GATE": "dropwatch_esc - pin_fair on strict-min-over-(types x probe_ks), paired bootstrap 95% CI > 0, AND dropwatch_esc executed cost/hop <= pin_fair's (4.0). PASS -> observed-drop adaptive pinning beats a priori pinning at equal-or-lower cost; the paper gains an ALGORITHM whose design is derived from its own measured mechanism. FAIL -> report honestly; the manage layer stays mitigation-only (structured state + faithful stance + pin flagged facts).",
+  "SECONDARY": [
+    "dropwatch_esc approaches pin_oracle: dropwatch_esc - pin_oracle CI upper bound > -0.10 (learns the subset nearly as well as knowing it).",
+    "cost quiescence (front-loading signature): dropwatch mean executed cost/hop < 4.0, with most repairs in the first ~4 hops.",
+    "dropwatch (no esc) > random at matched-or-lower cost."
+  ],
+  "predictions": {
+    "pin_fair_strict_min": "~0.10-0.25 (protects a random 4/24; unprotected types collapse toward floor; probe pinned in only 1/6 chains)",
+    "dropwatch_esc_strict_min": "~0.35-0.55 (repairs concentrate on observed-vulnerable facts; escalation converges to the de facto critical subset)",
+    "a_star_edf_strict_min": "~0.15 (thrashes, replicating E3-prime)",
+    "dropwatch_cost_per_hop": "~1.5-3.5 (< 4; event-driven, front-loaded)"
+  },
+  "honest_risks_preregistered": [
+    "Paraphrase false alarms (strict word-boundary match) waste slots but are harmless per E1; counted in cost.",
+    "Negation facts are unwatchable by the text detector (yes/no answers) -- dropwatch cannot protect them; negation's high chance floor (~0.5) limits the damage to strict-min. Reported as scope.",
+    "If early-hop drops greatly exceed B_ri, dropwatch may protect a random-ish early subset (slot lottery) and look like pin_fair; the escalation ladder is the intended fix. If it still loses to pin_fair, the honest conclusion is that under extreme overload a priori pinning cannot be beaten by online observation, and we report that."
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "floor_gap": {
+    "Qwen2.5-7B-Instruct": {
+      "arms_preserve": [
+        "distrust",
+        "faithful"
+      ],
+      "arms_collapse": [
+        "persona",
+        "node",
+        "rolecont"
+      ],
+      "kmax": 4,
+      "fitted_floor_gap": {
+        "point": 0.146,
+        "ci": [
+          -0.41,
+          0.272
+        ],
+        "excludes_0": false,
+        "note": "free-floor param is bootstrap-unstable on a 4-pt grid"
+      },
+      "S4_gap": {
+        "point": 0.19,
+        "ci": [
+          0.07,
+          0.3
+        ],
+        "excludes_0": true
+      }
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "arms_preserve": [
+        "distrust",
+        "faithful"
+      ],
+      "arms_collapse": [
+        "persona",
+        "node",
+        "rolecont"
+      ],
+      "kmax": 4,
+      "fitted_floor_gap": {
+        "point": 0.263,
+        "ci": [
+          -0.454,
+          0.621
+        ],
+        "excludes_0": false,
+        "note": "free-floor param is bootstrap-unstable on a 4-pt grid"
+      },
+      "S4_gap": {
+        "point": 0.18,
+        "ci": [
+          0.05,
+          0.29
+        ],
+        "excludes_0": true
+      }
+    },
+    "Phi-3-medium-4k-instruct": {
+      "arms_preserve": [
+        "distrust",
+        "faithful"
+      ],
+      "arms_collapse": [
+        "persona",
+        "node",
+        "rolecont"
+      ],
+      "kmax": 4,
+      "fitted_floor_gap": {
+        "point": 0.219,
+        "ci": [
+          -0.667,
+          0.356
+        ],
+        "excludes_0": false,
+        "note": "free-floor param is bootstrap-unstable on a 4-pt grid"
+      },
+      "S4_gap": {
+        "point": 0.24,
+        "ci": [
+          0.11,
+          0.35
+        ],
+        "excludes_0": true
+      }
+    }
+  },
+  "budget_beta_paired": {
+    "budgets": [
+      8,
+      16,
+      25,
+      50
+    ],
+    "beta_point": 0.782,
+    "beta_ci_paired": [
+      0.602,
+      0.993
+    ],
+    "n_boot_ok": 2000
+  },
+  "grid_beta_mu": {
+    "panels_M": [
+      4,
+      8,
+      16
+    ],
+    "n_boot_ok": 2000,
+    "beta_ci": [
+      0.603,
+      1.237
+    ],
+    "mu_ci": [
+      -1.007,
+      -0.179
+    ],
+    "beta_plus_mu_ci": [
+      -0.055,
+      0.653
+    ],
+    "arithmetic_null_rejected": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "registered": "2026-07-05 BEFORE run. R2.1 unforced-handoff external-validity test (round-5 CRITICAL). Qwen2.5-7B, n=100, M=8, ks=0,1,2,4,8. Unforced arms at budget=200 (non-binding). Predictions of S(8) per arm + the two pre-committed interpretation gates.",
+  "handoff@25": {"S8_pred": 0.23, "note": "known baseline, forced tight budget"},
+  "verbatim@25": {"S8_pred": 0.90, "note": "non-model passthrough ceiling"},
+  "freesum@200": {"S8_pred": 0.45, "note": "voluntary compression may still drop some facts"},
+  "jsonstate@200": {"S8_pred": 0.70, "note": "explicit facts[] extraction should preserve"},
+  "scratch@200": {"S8_pred": 0.80, "note": "append-all ~ verbatim"},
+  "gates": {
+    "forced_budget_specific": "jsonstate@200 S8 > 0.5 AND scratch@200 S8 > 0.5 -> half-life is specific to forced budgeted compression; scope the title",
+    "generalizes": "freesum@200 S8 < 0.35 AND jsonstate@200 S8 < 0.35 -> effect survives unforced handoffs; keep general title"
+  }
+}

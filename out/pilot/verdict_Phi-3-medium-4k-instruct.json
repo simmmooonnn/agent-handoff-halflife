@@ -1,0 +1,107 @@
+{
+  "provider": "hf",
+  "model": "microsoft/Phi-3-medium-4k-instruct",
+  "n": 100,
+  "ks": [
+    0,
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "budget": 25,
+  "m_facts": 8,
+  "load": "light",
+  "chance": 0.19,
+  "empirical_chance": {
+    "overall": 0.19,
+    "by_ftype": {
+      "numeric": 0.0,
+      "entity": 0.0,
+      "negation": 0.68,
+      "preference": 0.08
+    }
+  },
+  "handoff": {
+    "ks": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "S": [
+      0.94,
+      0.48,
+      0.31,
+      0.26,
+      0.25,
+      0.25
+    ],
+    "tau": 0.8868611675290156,
+    "f": 0.2488984263979083,
+    "S0": 0.9410877877406708,
+    "r2": 0.9994698053210875,
+    "tau_ci": [
+      0.6689094487265765,
+      1.1657752067046852
+    ],
+    "tau_boot_median": 0.8970126153453603
+  },
+  "longctx": {
+    "ks": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "S": [
+      0.93,
+      0.93,
+      0.93,
+      0.93,
+      0.91,
+      0.91
+    ]
+  },
+  "verbatim": {
+    "ks": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "S": [
+      0.94,
+      0.94,
+      0.94,
+      0.94,
+      0.94,
+      0.94
+    ]
+  },
+  "decay_shape": {
+    "best": "exponential",
+    "aic": {
+      "exponential": -55.98021806637432,
+      "linear": -15.167774929181327,
+      "constant": -14.726620265412674
+    }
+  },
+  "monotonic": true,
+  "moat": {
+    "tau_handoff": 0.8868611675290156,
+    "handoff_r2": 0.9994698053210875,
+    "drop_handoff": 0.69,
+    "drop_longctx": 0.020000000000000018,
+    "handoff_decays": true,
+    "passes": true
+  },
+  "GO": true
+}

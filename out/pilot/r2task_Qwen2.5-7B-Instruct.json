@@ -1,0 +1,34 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "n_numeric": 50,
+  "ks": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "task": "threshold-comparison (>5000, yes/no)",
+  "n_yes": 23,
+  "S_recall": [
+    0.78,
+    0.28,
+    0.12,
+    0.08,
+    0.06
+  ],
+  "S_task": [
+    0.62,
+    0.52,
+    0.44,
+    0.46,
+    0.46
+  ],
+  "tau_recall": 0.821,
+  "r2_recall": 0.999,
+  "tau_task": 0.838,
+  "r2_task": 0.947,
+  "tau_task_over_recall": 1.021,
+  "aligned": true,
+  "verdict": "ALIGNED: recall is a valid proxy for task success -- fact-death causes task-failure (validates the paper's metric)"
+}

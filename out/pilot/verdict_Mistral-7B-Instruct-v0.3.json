@@ -1,0 +1,107 @@
+{
+  "provider": "hf",
+  "model": "mistralai/Mistral-7B-Instruct-v0.3",
+  "n": 100,
+  "ks": [
+    0,
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "budget": 25,
+  "m_facts": 8,
+  "load": "light",
+  "chance": 0.12,
+  "empirical_chance": {
+    "overall": 0.12,
+    "by_ftype": {
+      "negation": 0.32,
+      "entity": 0.0,
+      "preference": 0.16,
+      "numeric": 0.0
+    }
+  },
+  "handoff": {
+    "ks": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "S": [
+      0.96,
+      0.67,
+      0.32,
+      0.23,
+      0.23,
+      0.2
+    ],
+    "tau": 1.443471081839317,
+    "f": 0.19791664790869803,
+    "S0": 0.980843995957925,
+    "r2": 0.9720932983380416,
+    "tau_ci": [
+      1.1887417565322023,
+      1.8138761663336833
+    ],
+    "tau_boot_median": 1.4532277494643089
+  },
+  "longctx": {
+    "ks": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "S": [
+      0.98,
+      0.98,
+      0.97,
+      0.96,
+      0.95,
+      0.94
+    ]
+  },
+  "verbatim": {
+    "ks": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "S": [
+      0.96,
+      0.96,
+      0.96,
+      0.96,
+      0.96,
+      0.96
+    ]
+  },
+  "decay_shape": {
+    "best": "exponential",
+    "aic": {
+      "exponential": -30.58597281216555,
+      "linear": -14.612142539890467,
+      "constant": -13.112642315797466
+    }
+  },
+  "monotonic": true,
+  "moat": {
+    "tau_handoff": 1.443471081839317,
+    "handoff_r2": 0.9720932983380416,
+    "drop_handoff": 0.76,
+    "drop_longctx": 0.040000000000000036,
+    "handoff_decays": true,
+    "passes": true
+  },
+  "GO": true
+}

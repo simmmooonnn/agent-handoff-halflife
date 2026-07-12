@@ -1,0 +1,106 @@
+{
+  "Mistral-7B-Instruct-v0.3": {
+    "model": "mistralai/Mistral-7B-Instruct-v0.3",
+    "curve": {
+      "c": 0.249332480837441,
+      "slope": 0.5413687623310361,
+      "floor": 0.2119233819235485
+    },
+    "anchors": [
+      {
+        "budget": 8,
+        "w": 10.682142857142857,
+        "tau": 0.8613412078699627,
+        "f": 0.1138666333194575
+      },
+      {
+        "budget": 16,
+        "w": 17.514285714285716,
+        "tau": 1.1439263724460125,
+        "f": 0.09953876108153928
+      },
+      {
+        "budget": 25,
+        "w": 26.787142857142857,
+        "tau": 1.7932047790083667,
+        "f": 0.16784633805309276
+      },
+      {
+        "budget": 50,
+        "w": 40.232142857142854,
+        "tau": 1.627908971529327,
+        "f": 0.46644179524010454
+      }
+    ],
+    "arms": [
+      {
+        "arm": "manifest@25",
+        "realized_w": 32.2,
+        "S4_obs": 0.73,
+        "S4_pred_from_length": 0.272,
+        "stance_residual": 0.458,
+        "dial2_present": true
+      },
+      {
+        "arm": "faithful@25",
+        "realized_w": 34.8,
+        "S4_obs": 0.75,
+        "S4_pred_from_length": 0.279,
+        "stance_residual": 0.471,
+        "dial2_present": true
+      }
+    ]
+  },
+  "Phi-3-medium-4k-instruct": {
+    "model": "microsoft/Phi-3-medium-4k-instruct",
+    "curve": {
+      "c": 0.0020716974086868512,
+      "slope": 2.0134822336529226,
+      "floor": 0.32658496633697465
+    },
+    "anchors": [
+      {
+        "budget": 8,
+        "w": 6.807142857142857,
+        "tau": 0.05734319610643976,
+        "f": 0.19999999896559859
+      },
+      {
+        "budget": 16,
+        "w": 11.428571428571429,
+        "tau": 0.5816778225950846,
+        "f": 0.3003758392256743
+      },
+      {
+        "budget": 25,
+        "w": 17.645714285714284,
+        "tau": 0.8919712652812577,
+        "f": 0.3176733369691675
+      },
+      {
+        "budget": 50,
+        "w": 26.689285714285713,
+        "tau": 0.9576086249120196,
+        "f": 0.48829069018745824
+      }
+    ],
+    "arms": [
+      {
+        "arm": "manifest@25",
+        "realized_w": 20.1,
+        "S4_obs": 0.74,
+        "S4_pred_from_length": 0.332,
+        "stance_residual": 0.408,
+        "dial2_present": true
+      },
+      {
+        "arm": "faithful@25",
+        "realized_w": 22.2,
+        "S4_obs": 0.82,
+        "S4_pred_from_length": 0.34,
+        "stance_residual": 0.48,
+        "dial2_present": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-06",
+  "purpose": "Round-6 cross-family pre-registration for Moat-1 (selection-not-capacity) and Moat-2 (stance->floor lever). Predictions locked BEFORE the Anvil runs; git timestamp proves non-circularity.",
+  "job_a_E1_externality_crossfamily": {
+    "script": "coupling.py",
+    "models": ["mistralai/Mistral-7B-Instruct-v0.3", "microsoft/Phi-3-medium-4k-instruct"],
+    "config": "n=100, ks=0,1,2,4, budgets=25,16, m_facts=8, loads=0,1,2,4",
+    "tests": "Moat-1 (selection-under-slack, not capacity) cross-family: does re-injecting m distractors verbatim each hop harm a co-carried bystander fact?",
+    "prediction_PASS_if": "externality ~= 0 replicates: tau(inj_m) is flat/non-monotone in m on BOTH families, every inj_m tau CI overlaps the m=0 baseline CI at budget 25, and the effective-budget arithmetic B_eff=B-m*w mispredicts (channel below capacity).",
+    "prediction_FAIL_if": "tau decreases monotonically with m and the inj4 CI is disjoint-below m=0 on either family (=> capacity eviction, Moat-1 is Qwen-specific).",
+    "why_it_matters": "Moat-1 is the anti-tautology core and is currently Qwen-only. A cross-family PASS makes selection-not-capacity a general claim; a FAIL scopes it to Qwen and weakens the anti-tautology argument."
+  },
+  "job_b_framing8_crossfamily": {
+    "script": "framing_sweep.py",
+    "models": ["mistralai/Mistral-7B-Instruct-v0.3", "microsoft/Phi-3-medium-4k-instruct"],
+    "config": "n=100, ks=0,1,2,4, budget=25, m_facts=8, conds=handoff,persona,selfsumm,neutral_long,node,rolecont,distrust,faithful (full 8-arm; extends the cached 5-arm cross-family sweep)",
+    "tests": "Moat-2 (stance controls the FLOOR, cross-family) at the full arm set: does the preservation-minus-collapse floor gap stay positive with the extra arms (persona/selfsumm/distrust/neutral_long)?",
+    "prediction_PASS_if": "on BOTH families the preservation-stance arms (faithful, distrust, neutral_long) have floor f strictly above the collapse arms (node, rolecont, persona); i.e. the +floor-gap seen on the 5-arm run (Mistral +0.69, Phi +0.22) holds with the new arms; the tau ordering need NOT replicate.",
+    "prediction_FAIL_if": "the floor gap closes or inverts on either family (preservation floor <= collapse floor), which would break the cross-family invariance of the stance->floor lever.",
+    "expected_secondary": "persona should join the collapse group by FLOOR on Mistral/Phi even though its tau may be high (mirrors node/rolecont: high tau, low floor cross-family)."
+  }
+}

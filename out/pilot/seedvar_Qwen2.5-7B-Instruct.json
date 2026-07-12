@@ -1,0 +1,145 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "cells": [
+    {
+      "cell": "handoff@k0",
+      "greedy": 0.91,
+      "seed_mean": 0.91,
+      "seed_sd": 0.0,
+      "abs_dev": 0.0
+    },
+    {
+      "cell": "handoff@k1",
+      "greedy": 0.63,
+      "seed_mean": 0.603,
+      "seed_sd": 0.005,
+      "abs_dev": 0.027
+    },
+    {
+      "cell": "handoff@k2",
+      "greedy": 0.36,
+      "seed_mean": 0.313,
+      "seed_sd": 0.005,
+      "abs_dev": 0.047
+    },
+    {
+      "cell": "handoff@k4",
+      "greedy": 0.23,
+      "seed_mean": 0.207,
+      "seed_sd": 0.019,
+      "abs_dev": 0.023
+    },
+    {
+      "cell": "handoff@k8",
+      "greedy": 0.23,
+      "seed_mean": 0.177,
+      "seed_sd": 0.017,
+      "abs_dev": 0.053
+    },
+    {
+      "cell": "manifest@k0",
+      "greedy": 0.91,
+      "seed_mean": 0.913,
+      "seed_sd": 0.005,
+      "abs_dev": 0.003
+    },
+    {
+      "cell": "manifest@k1",
+      "greedy": 0.81,
+      "seed_mean": 0.813,
+      "seed_sd": 0.012,
+      "abs_dev": 0.003
+    },
+    {
+      "cell": "manifest@k2",
+      "greedy": 0.67,
+      "seed_mean": 0.69,
+      "seed_sd": 0.022,
+      "abs_dev": 0.02
+    },
+    {
+      "cell": "manifest@k4",
+      "greedy": 0.66,
+      "seed_mean": 0.613,
+      "seed_sd": 0.025,
+      "abs_dev": 0.047
+    },
+    {
+      "cell": "manifest@k8",
+      "greedy": 0.66,
+      "seed_mean": 0.62,
+      "seed_sd": 0.008,
+      "abs_dev": 0.04
+    },
+    {
+      "cell": "ledger@k0",
+      "greedy": 0.91,
+      "seed_mean": 0.91,
+      "seed_sd": 0.0,
+      "abs_dev": 0.0
+    },
+    {
+      "cell": "ledger@k1",
+      "greedy": 0.22,
+      "seed_mean": 0.2,
+      "seed_sd": 0.014,
+      "abs_dev": 0.02
+    },
+    {
+      "cell": "ledger@k2",
+      "greedy": 0.16,
+      "seed_mean": 0.187,
+      "seed_sd": 0.012,
+      "abs_dev": 0.027
+    },
+    {
+      "cell": "ledger@k4",
+      "greedy": 0.16,
+      "seed_mean": 0.167,
+      "seed_sd": 0.021,
+      "abs_dev": 0.007
+    },
+    {
+      "cell": "ledger@k8",
+      "greedy": 0.16,
+      "seed_mean": 0.16,
+      "seed_sd": 0.008,
+      "abs_dev": 0.0
+    },
+    {
+      "cell": "node@k0",
+      "greedy": 0.91,
+      "seed_mean": 0.927,
+      "seed_sd": 0.005,
+      "abs_dev": 0.017
+    },
+    {
+      "cell": "node@k1",
+      "greedy": 0.13,
+      "seed_mean": 0.133,
+      "seed_sd": 0.005,
+      "abs_dev": 0.003
+    },
+    {
+      "cell": "node@k2",
+      "greedy": 0.13,
+      "seed_mean": 0.13,
+      "seed_sd": 0.0,
+      "abs_dev": 0.0
+    },
+    {
+      "cell": "node@k4",
+      "greedy": 0.13,
+      "seed_mean": 0.13,
+      "seed_sd": 0.0,
+      "abs_dev": 0.0
+    }
+  ],
+  "g1_median_dev": 0.017,
+  "g2_front": {
+    "handoff": 0.03,
+    "manifest": 0.007,
+    "ledger": 0.007
+  },
+  "pass": true
+}

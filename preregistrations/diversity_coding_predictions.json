@@ -1,0 +1,31 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-09",
+  "experiment": "DIVERSITY-CODED HANDOFFS: run R independent parallel summarization chains at temperature>0, then fact-level majority/union decode at depth K. Tests whether cross-chain redundancy recovers NUMBERS (erasure + substitution) where single-chain in-band methods plateau at ~0.2-0.5.",
+  "core_idea": "Single-chain in-band redundancy fails because erasure is CORRELATED within one text. Parallel independent chains (different sampled trajectories of the SAME model) may have PARTIALLY INDEPENDENT erasures -> a number dropped in chain 1 may survive in chain 3. Union decode recovers erasures; majority decode also corrects substitution/drift. Native to multi-agent (no external store).",
+  "model": "anthropic/claude-sonnet-4-6 (lowest-oracle aggressive compressor, the hardest case; TEMP=0.7 for cross-chain diversity). Regime: pin_oracle-style re-injection of facts 0..B_ri-1 every hop, NEUTRAL compression, M=24, K=16, budget=25. numeric facts only (the fragile type) + entity as a mid reference.",
+  "THE_MAKE_OR_BREAK_QUESTION": "Are cross-chain erasures INDEPENDENT? If the model deterministically drops the same number regardless of sampling (correlated across chains), diversity coding fails. If drop is stochastic (per-chain survival ~0.2 with independent noise), union of R chains -> ~1-(1-p)^R. Measured directly below.",
+  "arms_measured_per_R": {
+    "single_chain": "baseline per-chain numeric survival p at depth K (each of R chains, report mean).",
+    "union_decode": "fact counts as survived if ANY of the R chains has the correct answer in its final carry (recovers ERASURE).",
+    "majority_decode": "take the most common non-empty answer across R chains; survived if it equals the truth (recovers erasure AND corrects substitution/drift)."
+  },
+  "independence_test": "Compare the OBSERVED union survival at R to the INDEPENDENCE PREDICTION 1-(1-p)^R (p = mean single-chain survival). If observed ~ predicted -> erasures independent, method works and is provisionable. If observed << predicted (observed ~ p, flat in R) -> erasures CORRELATED across chains, method fails (impossibility result). This gap is the headline diagnostic.",
+  "R_values": [1, 2, 3, 5, 8],
+  "PRE_REGISTERED_READOUT": {
+    "METHOD_WORKS": "union or majority decode at R=8 reaches >= 0.80 numeric survival AND observed union tracks the independence prediction 1-(1-p)^R within CI (erasures ~independent). -> a novel, provisionable method (tau -> required R) that solves numbers via spatial diversity, no external store.",
+    "PARTIAL": "union at R=8 in 0.5-0.8, or observed union below the independence prediction but still rising in R -> partially-independent erasures; real lift, provisioning needs an empirical correlation factor.",
+    "IMPOSSIBILITY": "union at R=8 stays near single-chain p and flat in R -> cross-chain erasures are CORRELATED; even independent parallel redundancy cannot recover numbers. A hard information-theoretic-flavored negative (the model's salience deletion is deterministic across samples)."
+  },
+  "predictions": {
+    "point": "single-chain numeric p ~0.2-0.35 at K=16. I expect PARTIAL-to-WORKS: union rises with R (drop has real stochasticity per the 0.20 pin_oracle survival) but likely somewhat BELOW the full-independence prediction (same model -> shared salience prior -> partial cross-chain correlation). majority slightly below union on erasure but adds drift correction. Best guess: union R=8 lands 0.55-0.85.",
+    "risk": "cross-chain correlation is the real threat: a specific number like 7311 may be 'boring' to THIS model in nearly every sample -> correlated drop -> union flat. Genuinely uncertain; the independence-gap diagnostic makes either outcome informative.",
+    "novelty_note": "diversity/repetition coding (comms) and majority voting (self-consistency, Wang 2022) exist, but applied to FACT SURVIVAL across handoff hops with tau-provisioned R and UEP-by-type, on parallel independent chains (spatial not temporal diversity) -> new application + the measurement->provisioning bridge. Differentiate from self-consistency (votes ANSWERS not preserved facts) and external memory (no store, pure redundancy)."
+  },
+  "honest_notes": [
+    "TEMP=0.7 breaks determinism -> cache keys fold temp+chain seed (DSEED) so chains are distinct and reruns are stable per-chain.",
+    "cost ~ 25 numeric x (R=1+2+3+5+8=19 chains) x 16 hops + probes ~ 8000 calls on Sonnet; add entity ref -> ~12k. Reduce entity if needed.",
+    "This is IN-BAND redundancy across agents, R-x compute cost; the tradeoff (compute vs external store) is the honest limitation to state.",
+    "Uses Anthropic key (OpenAI quota exhausted 2026-07-08)."
+  ]
+}

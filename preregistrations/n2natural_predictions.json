@@ -1,0 +1,24 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-06",
+  "experiment": "N2 natural-fact survival on a document-summarization chain (n2natural.py + n2corpus.py)",
+  "design": "16 authored FICTIONAL prose docs (~130w) x 4 embedded facts; chain summarizes the DOCUMENT under budget=40; ks=0,1,2,4,8; arms handoff/faithful/longctx/nofact; Qwen2.5-7B. Gates computed on checkable types (numeric/entity/preference, 48 probes); negation (all-'no' answers, yes/no-guessable) reported as secondary only.",
+  "closes": "Round-6 C3 external validity -- 'templated planted facts under engineered pressure are decorative; does tau_h exist for natural prose facts?' (the single most-cited reject risk: DA-4, R4-N2).",
+  "PRE-REGISTERED GATES": {
+    "G1_decay_exists": "handoff S(0)-S(8) >= 0.20 on checkable types. PASS -> natural facts decay through summarization handoffs. FAIL -> decay requires engineered multi-fact pressure; the paper's regime is a scope limit to state.",
+    "G2_moat": "handoff drop minus longctx drop >= 0.20. PASS -> the boundary-compression moat replicates on natural content. FAIL -> the moat is specific to templated fact-lists.",
+    "G3_facts_not_parametric": "nofact chance <= 0.15 on checkable types (fictional specifics unanswerable without the doc).",
+    "G4_secondary_mitigation": "faithful S(8) - handoff S(8) >= 0.10. PASS -> the preservation-stance mitigation transfers to natural content (N7-lite)."
+  },
+  "predictions": {
+    "chance_nofact": "~0.0-0.05 (fictional names/numbers)",
+    "handoff": "decays with tau ~1-3 (one doc under 40w budget = natural pressure comparable to M=8@25); S(8) near a floor 0.1-0.3",
+    "longctx": "near-flat (drop <= 0.1), replicating the synthetic moat",
+    "faithful": "S(8) above handoff by 0.1-0.3 (stance bonus transfers)"
+  },
+  "honest_notes": [
+    "Docs authored by us -- natural PROSE but not wild-collected documents; stated as 'naturalistic', a step toward external validity, not a field study.",
+    "verbatim arm is the k=0 anchor by construction (no-model passthrough is the identity on text).",
+    "negation facts all answer 'no' -> excluded from gates (yes/no guesser scores ~1.0 on them); curves reported as secondary."
+  ]
+}

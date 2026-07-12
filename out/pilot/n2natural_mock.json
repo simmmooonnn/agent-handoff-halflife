@@ -1,0 +1,62 @@
+{
+  "model": "mock/mock",
+  "n_docs": 16,
+  "n_facts": 64,
+  "budget": 40,
+  "ks": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "chance_nofact": 0,
+  "chance_nofact_negation_secondary": 1,
+  "gate_types": "numeric/entity/preference (48 probes); negation secondary",
+  "handoff": {
+    "S": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "tau": 199363.157,
+    "r2": 0.184,
+    "f": 0.306
+  },
+  "faithful": {
+    "S": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "handoff_negation_secondary": {
+    "S": [
+      0.062,
+      0.062,
+      0.062,
+      0.062,
+      0.062
+    ]
+  },
+  "longctx": {
+    "S": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "gates": {
+    "G1_decay_exists": false,
+    "G2_moat": false,
+    "G3_facts_not_parametric": true,
+    "G4_faithful_lifts_deep_k": false
+  },
+  "verdict": "check gates -- see JSON"
+}

@@ -1,0 +1,17 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-10",
+  "experiment": "PREDICT-THEN-VERIFY PROVISIONING (Method B, the paper's method spine). The half-life law as an A-PRIORI design rule: fit S(k;B) = f + (S0-f)*exp(-k/(a*B^beta)) on a small calibration grid, then predict held-out (B,k) cells with ZERO free parameters and verify live; then INVERT the law to compute the budget B* that hits target survival T=0.5 at depth k=4 and verify B* lands. Memory papers report post-hoc accuracy; a validated a-priori provisioning rule is the capability none has. Doubles as the first frontier-model (Sonnet) budget-power-law measurement (beta was Qwen-only, 0.82).",
+  "design": "Sonnet, temp=0, neutral handoff (run_chain), 32 probes/cell (8 per type, ndist=7 mixed). CALIBRATION grid: B in {15,25,40} x k in {0,1,2,4} (12 cells). Joint 4-parameter fit (S0, f, a, beta). HELD-OUT cells (fixed in advance, predicted before running): (20,2),(20,4) budget interpolation; (60,1),(60,2),(60,8) budget extrapolation 1.5x beyond grid; (25,8) depth extrapolation 2x beyond grid. Naive baseline predictor = observed survival at nearest calibration cell (nearest B tie->larger, then nearest k tie->larger). Provisioning inversion: B* = ((-k_t/ln((T-f)/(S0-f)))/a)^(1/beta), clamped to [8,100], run at k=4.",
+  "metric": "MAE of law predictions vs observed on the 6 held-out cells; must beat naive-baseline MAE. Provisioning: |S_obs(B*,4) - 0.5|.",
+  "PRE_REGISTERED_READOUT": {
+    "LAW_PREDICTS": "mae_law <= 0.10 AND mae_law < mae_naive AND provisioning |err| <= 0.15. -> the survival surface is a validated predictive design rule on a frontier model; Method B stands as the paper's method contribution (measure a few points -> provision any pipeline).",
+    "PARTIAL": "mae_law <= 0.18 AND (mae_law < mae_naive OR provisioning |err| <= 0.15). -> law is predictive but coarse; report per-cell errors honestly, scope the provisioning claim to interpolation if extrapolation cells are the misses.",
+    "FAIL": "mae_law > 0.18 OR mae_naive <= mae_law. -> the surface does not transfer across (B,k) on Sonnet; the provisioning method claim falls; paper reverts to characterization-only (laws + mechanism + negative results)."
+  },
+  "predictions": {
+    "point": "Expect S0 ~ 0.9-0.97, aggregate floor f ~ 0.1-0.2 (only negation guessable ~0.5, others ~0 -> mean ~0.13), beta in [0.5, 1.2] (Qwen was 0.82), tau(25) ~ 0.5-1.5 (Sonnet forgets fast at M=8/B=25: e9 free_text fell 0.92->0.08 by k=2). Held-out interpolation cells should be tightest; B=60 extrapolation is the riskiest (if survival saturates near S0 the exponential-in-B form may over/under-shoot). Provisioning B* likely in the 40-90 range given tau(25)<<4 needs tau(B*) ~ 4/ln((0.9-f)/(0.5-f)) ~ 5-6.",
+    "risk": "(1) Fact-type mixture makes aggregate S(k) a mixture of exponentials, not a single exponential -- misspecification will show up as held-out error (that is the point of predict-then-verify; we do NOT patch the model post-hoc). (2) n=32/cell -> binomial SE ~0.09/cell; MAE threshold 0.10 sits at the noise edge; the law-vs-naive comparison is the more robust criterion. (3) At B=15 the curve may hit floor by k=1 (tau barely identifiable) -- power law then leans on B=25/40.",
+    "honest_limits": "single model (Sonnet), single regime (M=8, neutral framing), aggregate-over-types surface (per-type surfaces need larger n); depth extrapolation tested at one cell; no bootstrap CIs on the fit in this run (directional validation of the DESIGN-RULE capability, not a precision measurement)."
+  }
+}

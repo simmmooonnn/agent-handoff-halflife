@@ -1,0 +1,88 @@
+{
+  "model": {
+    "c": 0.019200023337236097,
+    "slope": 1.5312774407034195,
+    "floor": 0.22158169050544804,
+    "S0": 0.91,
+    "wneu": "2.78*b^0.5355"
+  },
+  "class_rule": {
+    "preservation": "head contains an explicit exact-retention directive (facts must survive unchanged/verbatim/every item)",
+    "rewrite": "head assigns a role identity ('You are X') or frames the output as a NEW artifact type replacing the input",
+    "neutral": "same-material compression with neither a role nor a retention directive"
+  },
+  "class_members_training": {
+    "preservation": [
+      "faithful",
+      "manifest",
+      "faithman"
+    ],
+    "rewrite": [
+      "node",
+      "persona",
+      "rolecont"
+    ],
+    "neutral": [
+      "selfsumm",
+      "distrust",
+      "neutral_long"
+    ]
+  },
+  "class_means": {
+    "preservation": {
+      "delta": 4.667,
+      "bonus": 0.31
+    },
+    "rewrite": {
+      "delta": -6.533,
+      "bonus": -0.06
+    },
+    "neutral": {
+      "delta": -2.933,
+      "bonus": 0.087
+    }
+  },
+  "predictions": {
+    "ledger@25": {
+      "arm": "ledger",
+      "cls": "preservation",
+      "budget": 25,
+      "w_pred": 20.2,
+      "S4_pred": 0.617,
+      "S4_lenonly_at_wpred": 0.307,
+      "delta_class": 4.67,
+      "bonus_class": 0.31
+    },
+    "ledger@12": {
+      "arm": "ledger",
+      "cls": "preservation",
+      "budget": 12,
+      "w_pred": 15.2,
+      "S4_pred": 0.559,
+      "S4_lenonly_at_wpred": 0.249,
+      "delta_class": 4.67,
+      "bonus_class": 0.31
+    },
+    "editor@25": {
+      "arm": "editor",
+      "cls": "rewrite",
+      "budget": 25,
+      "w_pred": 9.0,
+      "S4_pred": 0.162,
+      "S4_lenonly_at_wpred": 0.222,
+      "delta_class": -6.53,
+      "bonus_class": -0.06
+    },
+    "link@25": {
+      "arm": "link",
+      "cls": "neutral",
+      "budget": 25,
+      "w_pred": 12.6,
+      "S4_pred": 0.318,
+      "S4_lenonly_at_wpred": 0.231,
+      "delta_class": -2.93,
+      "bonus_class": 0.087
+    }
+  },
+  "success": "median |S4_pred-S4_obs| <= 0.10 over the 4 cells AND class-model beats length-only (at OBSERVED w) on held-out MSE. Note: unlike heldout.py, these STANCES were never fit -- their bonus comes only from the class rule. This is the stance-generalization test round 4 demanded."
+}

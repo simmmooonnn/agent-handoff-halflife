@@ -1,0 +1,26 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-07",
+  "experiment": "P1b: DROPWATCH capability-axis map. Does a MORE ADVANCED GPT model change the algorithm's advantage over a-priori pinning? gpt-5.4-mini gave a BOUNDARY result (dropwatch_esc-pin_fair +0.040 [0.0,0.12], gate FAIL at lower cost). This is NOT a search for a passing model -- it is a pre-registered SET; ALL results are reported regardless of pass/fail.",
+  "anti_p_hacking": "Reporting rule fixed before run: every model in the set below is reported in the paper's DROPWATCH cross-family table with its exact gate verdict, whether PASS or FAIL. No model is dropped for failing. Running one model at a time and stopping at the first PASS is explicitly forbidden here.",
+  "model_set": {
+    "openai/gpt-5.4": "same generation as gpt-5.4-mini, larger -> isolates capability/scale at fixed generation",
+    "openai/gpt-5.5": "newest generation available -> isolates version/generation axis"
+  },
+  "both_run_with": "reasoning_effort='none' + temperature=0 (non-reasoning mode), byte-identical protocol to every other family; regime M=24, K=16, budget=25, B_ri=4, theta=0.35, n=100.",
+  "PRIMARY_GATE (per model, same as Qwen/mini)": "dropwatch_esc strict-min minus pin_fair strict-min: paired bootstrap 95% CI lower bound > 0 AND dropwatch_esc cost_per_hop <= pin_fair (4.0).",
+  "mechanistic_prediction (honest, pre-run)": {
+    "direction_uncertain": "Two opposing forces. (1) Stronger models forget FASTER (P0: Sonnet tau 0.29 < mini 0.50 < Qwen 1.5); faster forgetting crushes the worst-decaying type to ~0 for ALL policies, SHRINKING the strict-min gap -> predicts gate FAIL, possibly worse than mini. (2) Stronger models follow the restatement instruction better, so DROPWATCH's repairs stick harder than pin_fair's -> could WIDEN the gap -> gate PASS. Genuinely uncertain which dominates.",
+    "point_prediction": "most likely BOTH remain boundary/FAIL (force 1 dominates in this brutal M=24/budget=25 regime), with dropwatch_esc-pin_fair point in [0.00, 0.10] and cost < 4.0. A PASS on either would mean instruction-following (force 2) wins at that capability -- a genuine finding, not a rescue.",
+    "what_each_outcome_means": {
+      "all_fail": "DROPWATCH's SIGNIFICANT advantage is Qwen-specific; on frontier it is a consistent directionally-positive-at-lower-cost boundary effect. Honest scope statement; the method's earned claim stays on the model where it is significant.",
+      "some_pass": "the advantage is capability-dependent, not model-idiosyncratic; report the capability pattern (which tiers pass) as the finding.",
+      "monotone_shrink_with_capability": "report as: the stronger the model, the more uniformly it forgets, the less targeting helps -- ties the algorithm result back to the P0 'frontier forgets faster' headline."
+    }
+  },
+  "honest_notes": [
+    "Separate cache files (cache_e4_gpt-5.4.json, cache_e4_gpt-5.5.json) -> safe concurrent run, no shared-cache race.",
+    "Cost higher than mini (full-size models); effort=none keeps output ~91 tokens/call so bounded.",
+    "The primary DROPWATCH claim already PASSED on Qwen (+0.175 CI[.04,.32]); this run maps generalization, it cannot retroactively un-earn or (by itself) re-earn that claim."
+  ]
+}

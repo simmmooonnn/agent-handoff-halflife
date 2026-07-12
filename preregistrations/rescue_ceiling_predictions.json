@@ -1,0 +1,25 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-07",
+  "experiment": "RESCUE CEILING TEST: can the repair PRIMITIVE be upgraded to lift the pin_oracle ceiling on an aggressive compressor (gpt-5.5), where bare re-injection caps numeric-fact carry-survival at 0.20?",
+  "why": "Proven: pin_oracle (re-inject facts 0..B_ri-1 at the front every hop) is the UPPER BOUND of every WHO/WHEN repair policy. On gpt-5.5 it caps numeric carry-survival at 0.20 -> no scheduling method (DROPWATCH included) can beat 0.20. The ceiling is set by the repair PRIMITIVE (bare declarative re-statement + neutral compression), not the policy. This tests whether upgrading the primitive lifts the ceiling.",
+  "model": "openai/gpt-5.5 (the hardest failing model; reasoning_effort='none' + temp=0)",
+  "regime": "numeric probes only (the fragile type), M=24, B_ri=4, K=16, budget=25, n=25 numeric facts. Same pin_oracle re-injection (facts 0..3 at front every hop); only the per-hop COMPRESSION STANCE / injection frame varies.",
+  "arms": {
+    "neutral": "baseline: bare re-injection + neutral 'keep only what matters' compression. Should reproduce ~0.20 (validates the harness against the e4 result).",
+    "faithful": "re-injection + per-hop preservation-stance compression ('preserve the specific facts, names, and numbers verbatim'). Moat-2 lever, known to raise the FLOOR cross-family incl frontier.",
+    "ledger": "re-injection + record-keeping stance ('every fact/name/number must appear unchanged; dropping an entry corrupts the record').",
+    "salience": "NEW primitive: re-inject each fact wrapped in an importance frame the compressor respects ('CRITICAL - the next step is tested on this exact value; preserve verbatim: <fact>'), + neutral compression. Directly relabels importance, exploiting the measured fact that negation (reads-as-important) survives where bare numbers do not."
+  },
+  "metric": "numeric answer-in-carry (== answered-correctly, per the validated identity) at probe hops 4/8/16, aggregated over 25 numeric facts.",
+  "PRE_REGISTERED_READOUT": {
+    "RESCUE_EXISTS": "any upgraded arm (faithful/ledger/salience) lifts min-over-probe-hops carry-survival to >= 0.40 (2x the 0.20 neutral ceiling) with CI-excl the neutral baseline. -> a new method exists: DROPWATCH detection + upgraded primitive; worth building + full re-run.",
+    "PARTIAL": "lift to 0.25-0.40 -> primitive helps but does not close the gap; report as a direction, not a solved rescue.",
+    "IMPOSSIBILITY": "no arm exceeds ~0.25 -> aggressive-compressor loss is primitive-invariant in-band; honest conclusion = must offload to an external store (paper Pillar-4). A clean negative, still publishable."
+  },
+  "predictions": {
+    "point": "faithful/ledger lift to ~0.40-0.60 (preservation stance raised the floor cross-family, so it should raise this ceiling too); salience lifts most (~0.50-0.70, direct importance relabel). Most likely RESCUE_EXISTS.",
+    "risk": "gpt-5.5's compression may override even a preservation stance (it is the most aggressive of the 5) -> could land in PARTIAL or IMPOSSIBILITY. Genuinely uncertain; that is why this is the make-or-break test.",
+    "honest_note": "faithful/ledger/salience stances already exist as COMPRESSION arms in the paper; the NOVELTY here is combining the validated carry-visibility DETECTOR with an upgraded repair PRIMITIVE as a closed-loop controller for aggressive compressors -- not the stance itself. Will not headline the stance as new."
+  }
+}

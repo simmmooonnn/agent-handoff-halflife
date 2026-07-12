@@ -1,0 +1,127 @@
+{
+  "floor": 0.22158,
+  "arms": [
+    {
+      "arm": "selfsumm",
+      "S1": 0.5,
+      "S2": 0.31,
+      "S4_obs": 0.27,
+      "S4_probe": 0.23,
+      "abs_err": 0.04,
+      "class": "low_floor_collapse"
+    },
+    {
+      "arm": "persona",
+      "S1": 0.2,
+      "S2": 0.19,
+      "S4_obs": 0.18,
+      "S4_probe": 0.19,
+      "abs_err": 0.01,
+      "class": "low_floor_collapse"
+    },
+    {
+      "arm": "node",
+      "S1": 0.13,
+      "S2": 0.13,
+      "S4_obs": 0.13,
+      "S4_probe": 0.13,
+      "abs_err": 0.0,
+      "class": "low_floor_collapse"
+    },
+    {
+      "arm": "rolecont",
+      "S1": 0.18,
+      "S2": 0.18,
+      "S4_obs": 0.18,
+      "S4_probe": 0.18,
+      "abs_err": 0.0,
+      "class": "low_floor_collapse"
+    },
+    {
+      "arm": "distrust",
+      "S1": 0.49,
+      "S2": 0.41,
+      "S4_obs": 0.39,
+      "S4_probe": 0.314,
+      "abs_err": 0.076,
+      "class": "high_floor_preservation"
+    },
+    {
+      "arm": "neutral_long",
+      "S1": 0.8,
+      "S2": 0.5,
+      "S4_obs": 0.32,
+      "S4_probe": 0.286,
+      "abs_err": 0.034,
+      "class": "low_floor_collapse"
+    },
+    {
+      "arm": "faithful",
+      "S1": 0.83,
+      "S2": 0.66,
+      "S4_obs": 0.58,
+      "S4_probe": 0.449,
+      "abs_err": 0.131,
+      "class": "high_floor_preservation"
+    },
+    {
+      "arm": "itemize",
+      "S1": 0.89,
+      "S2": 0.87,
+      "S4_obs": 0.87,
+      "S4_probe": 0.832,
+      "abs_err": 0.038,
+      "class": "high_floor_preservation"
+    },
+    {
+      "arm": "manifest",
+      "S1": 0.81,
+      "S2": 0.67,
+      "S4_obs": 0.66,
+      "S4_probe": 0.482,
+      "abs_err": 0.178,
+      "class": "high_floor_preservation"
+    },
+    {
+      "arm": "faithman",
+      "S1": 0.72,
+      "S2": 0.72,
+      "S4_obs": 0.7,
+      "S4_probe": 0.72,
+      "abs_err": 0.02,
+      "class": "high_floor_preservation"
+    },
+    {
+      "arm": "ledger@25",
+      "S1": 0.22,
+      "S2": 0.16,
+      "S4_obs": 0.16,
+      "S4_probe": 0.16,
+      "abs_err": 0.0,
+      "class": "low_floor_collapse"
+    },
+    {
+      "arm": "editor@25",
+      "S1": 0.29,
+      "S2": 0.18,
+      "S4_obs": 0.14,
+      "S4_probe": 0.18,
+      "abs_err": 0.04,
+      "class": "low_floor_collapse"
+    },
+    {
+      "arm": "link@25",
+      "S1": 0.17,
+      "S2": 0.15,
+      "S4_obs": 0.14,
+      "S4_probe": 0.15,
+      "abs_err": 0.01,
+      "class": "low_floor_collapse"
+    }
+  ],
+  "median_err_all_train": 0.036,
+  "median_err_new_stances": 0.01,
+  "median_err_low_floor_collapse": 0.01,
+  "median_err_high_floor_preservation": 0.076,
+  "note": "2-hop probe is accurate on low-floor collapse arms (already near chance) and mis-predicts high-floor preservation arms (private floor > global floor); the latter need a deeper (k~4) probe."
+}

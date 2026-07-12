@@ -1,0 +1,59 @@
+{
+  "model": "claude-sonnet-4-6",
+  "M": 24,
+  "K": 8,
+  "C": 12,
+  "phis": [
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5
+  ],
+  "curves": {
+    "0.000": {
+      "none": 0.139,
+      "random": 0.139,
+      "folk_numbers": 0.139,
+      "measured_greedy": 0.139,
+      "oracle": 0.139
+    },
+    "0.125": {
+      "none": 0.139,
+      "random": 0.247,
+      "folk_numbers": 0.264,
+      "measured_greedy": 0.26,
+      "oracle": 0.264
+    },
+    "0.250": {
+      "none": 0.139,
+      "random": 0.354,
+      "folk_numbers": 0.389,
+      "measured_greedy": 0.385,
+      "oracle": 0.389
+    },
+    "0.375": {
+      "none": 0.139,
+      "random": 0.462,
+      "folk_numbers": 0.469,
+      "measured_greedy": 0.507,
+      "oracle": 0.514
+    },
+    "0.500": {
+      "none": 0.139,
+      "random": 0.569,
+      "folk_numbers": 0.59,
+      "measured_greedy": 0.632,
+      "oracle": 0.639
+    }
+  },
+  "per_type_survival": {
+    "entity": 0.014,
+    "negation": 0.514,
+    "numeric": 0,
+    "preference": 0.028
+  },
+  "measured_minus_folk_avg": 0.014,
+  "measured_minus_random_avg": 0.03,
+  "measured_gap_to_oracle_avg": 0.004
+}

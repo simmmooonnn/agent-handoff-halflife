@@ -1,0 +1,41 @@
+{
+  "grid_ks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    8,
+    16
+  ],
+  "S_handoff": [
+    0.91,
+    0.63,
+    0.36,
+    0.27,
+    0.23,
+    0.23,
+    0.23
+  ],
+  "exp": {
+    "tau": 1.442,
+    "f": 0.209,
+    "S0": 0.928,
+    "rss": 0.007110770679488442,
+    "aicc": -34.24,
+    "params": 3
+  },
+  "stretched_exp": {
+    "tau": 1.479,
+    "s": 1.595,
+    "f": 0.23,
+    "S0": 0.91,
+    "rss": 0.00013497014827505246,
+    "aicc": -47.99,
+    "params": 4
+  },
+  "delta_aicc_stretched_minus_exp": -13.75,
+  "residual_df_stretched": 3,
+  "aicc_denominator_note": "AICc small-sample denom n-k-1 = 2 for the 4-param fit; ranking is indicative with so few points",
+  "preferred": "stretched_exp"
+}

@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-4-6",
+  "budget": 25,
+  "n_probes": 12,
+  "ndist": 7,
+  "ks": [
+    0,
+    2,
+    4,
+    6,
+    8
+  ],
+  "ftypes": [
+    "numeric"
+  ],
+  "curves": {
+    "numeric": {
+      "free_text": [
+        0.917,
+        0.083,
+        0.167,
+        0.167,
+        0.167
+      ],
+      "mem0": [
+        0.917,
+        0.917,
+        0.917,
+        0.917,
+        0.917
+      ],
+      "ours_slot": [
+        0.917,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "tau": {
+    "numeric": {
+      "free_text": 2.72,
+      "mem0": 57.7,
+      "ours_slot": null
+    }
+  }
+}

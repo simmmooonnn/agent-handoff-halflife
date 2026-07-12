@@ -1,0 +1,73 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "K": 8,
+  "budget": 25,
+  "m_facts": 8,
+  "schedules": {
+    "never": {
+      "cost_per_fact": 0,
+      "hops": [],
+      "per_ftype": {
+        "entity": 0.0,
+        "negation": 0.5,
+        "numeric": 0.1,
+        "preference": 0.0
+      },
+      "min": 0.0,
+      "mean": 0.15
+    },
+    "every4": {
+      "cost_per_fact": 2,
+      "hops": [
+        4,
+        8
+      ],
+      "per_ftype": {
+        "entity": 0.6,
+        "negation": 0.5,
+        "numeric": 0.6,
+        "preference": 0.8
+      },
+      "min": 0.5,
+      "mean": 0.625
+    },
+    "every2": {
+      "cost_per_fact": 4,
+      "hops": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "per_ftype": {
+        "entity": 0.7,
+        "negation": 0.5,
+        "numeric": 0.6,
+        "preference": 0.7
+      },
+      "min": 0.5,
+      "mean": 0.625
+    },
+    "every1": {
+      "cost_per_fact": 8,
+      "hops": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "per_ftype": {
+        "entity": 0.9,
+        "negation": 0.6,
+        "numeric": 1.0,
+        "preference": 0.7
+      },
+      "min": 0.6,
+      "mean": 0.8
+    }
+  }
+}

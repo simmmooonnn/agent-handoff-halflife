@@ -1,0 +1,82 @@
+{
+  "model": {
+    "c": 0.019200023337236097,
+    "slope": 1.5312774407034195,
+    "floor": 0.22158169050544804,
+    "S0": 0.91,
+    "wneu": "2.78*b^0.5355"
+  },
+  "delta": {
+    "node": -8.2,
+    "persona": -4.4,
+    "rolecont": -7.0,
+    "selfsumm": -4.1,
+    "distrust": -3.9,
+    "faithful": 4.5,
+    "manifest": 1.8,
+    "faithman": 7.7,
+    "neutral_long": -0.8
+  },
+  "bonus": {
+    "node": -0.09,
+    "persona": -0.05,
+    "rolecont": -0.04,
+    "selfsumm": 0.04,
+    "distrust": 0.16,
+    "faithful": 0.23,
+    "manifest": 0.37,
+    "faithman": 0.33,
+    "neutral_long": 0.06
+  },
+  "predictions": {
+    "faithful@8": {
+      "w_pred": 13.0,
+      "S4_pred": 0.463,
+      "S4_lenonly": 0.233,
+      "arm": "faithful",
+      "budget": 8,
+      "bonus": 0.23
+    },
+    "node@50": {
+      "w_pred": 14.4,
+      "S4_pred": 0.152,
+      "S4_lenonly": 0.242,
+      "arm": "node",
+      "budget": 50,
+      "bonus": -0.09
+    },
+    "manifest@12": {
+      "w_pred": 12.3,
+      "S4_pred": 0.6,
+      "S4_lenonly": 0.23,
+      "arm": "manifest",
+      "budget": 12,
+      "bonus": 0.37
+    },
+    "manifest@50": {
+      "w_pred": 24.4,
+      "S4_pred": 0.735,
+      "S4_lenonly": 0.365,
+      "arm": "manifest",
+      "budget": 50,
+      "bonus": 0.37
+    },
+    "faithman@8": {
+      "w_pred": 16.2,
+      "S4_pred": 0.588,
+      "S4_lenonly": 0.258,
+      "arm": "faithman",
+      "budget": 8,
+      "bonus": 0.33
+    },
+    "persona@50": {
+      "w_pred": 18.2,
+      "S4_pred": 0.231,
+      "S4_lenonly": 0.281,
+      "arm": "persona",
+      "budget": 50,
+      "bonus": -0.05
+    }
+  },
+  "success": "median |S4_pred-S4_obs|<=0.10 AND two-dial beats length-only on held-out MSE"
+}

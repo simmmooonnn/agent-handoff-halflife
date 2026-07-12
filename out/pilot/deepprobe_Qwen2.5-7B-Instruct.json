@@ -1,0 +1,71 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "cells": [
+    {
+      "cell": "ledger@25",
+      "S4_meas": 0.16,
+      "S8_pred": 0.16,
+      "S8_obs": 0.16,
+      "abs_err8": 0.0,
+      "S16_obs": 0.16,
+      "abs_err16": 0.0
+    },
+    {
+      "cell": "ledger@12",
+      "S4_meas": 0.15,
+      "S8_pred": 0.15,
+      "S8_obs": 0.14,
+      "abs_err8": 0.01,
+      "S16_obs": null,
+      "abs_err16": null
+    },
+    {
+      "cell": "editor@25",
+      "S4_meas": 0.14,
+      "S8_pred": 0.14,
+      "S8_obs": 0.15,
+      "abs_err8": 0.01,
+      "S16_obs": null,
+      "abs_err16": null
+    },
+    {
+      "cell": "link@25",
+      "S4_meas": 0.14,
+      "S8_pred": 0.14,
+      "S8_obs": 0.14,
+      "abs_err8": 0.0,
+      "S16_obs": null,
+      "abs_err16": null
+    },
+    {
+      "cell": "manifest@25",
+      "S4_meas": 0.66,
+      "S8_pred": 0.66,
+      "S8_obs": 0.66,
+      "abs_err8": 0.0,
+      "S16_obs": 0.66,
+      "abs_err16": 0.0
+    },
+    {
+      "cell": "faithman@25",
+      "S4_meas": 0.7,
+      "S8_pred": 0.7,
+      "S8_obs": 0.7,
+      "abs_err8": 0.0,
+      "S16_obs": null,
+      "abs_err16": null
+    },
+    {
+      "cell": "neutral_long@25",
+      "S4_meas": 0.32,
+      "S8_pred": 0.32,
+      "S8_obs": 0.29,
+      "abs_err8": 0.03,
+      "S16_obs": null,
+      "abs_err16": null
+    }
+  ],
+  "median_abs_err8": 0.0,
+  "max_abs_err16": 0.0,
+  "pass": true
+}

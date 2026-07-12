@@ -1,0 +1,30 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-07",
+  "experiment": "P1 FRONTIER: port the two Qwen-only pillars -- the DROPWATCH algorithm and the N2 natural-document chain -- to a frontier model (gpt-5.4-mini), which P0 proved sits in the decay regime (tau=0.50, moat 0.77, floor lever +0.19, all gates PASS).",
+  "why": "Round-7 gap: the paper's METHOD contribution (DROPWATCH) and its strongest external-validity leg (N2 natural prose) were each demonstrated on Qwen2.5-7B only. A single-model algorithm result is weak for a method-paper headline. gpt-5.4-mini is the natural carrier: cheap, and P0-proven to forget (in fact faster than Qwen).",
+  "model": "openai/gpt-5.4-mini (reasoning_effort='none' + temperature=0, non-reasoning mode, identical protocol to the Qwen run)",
+  "runs": {
+    "DROPWATCH": {
+      "cmd": "e4dropwatch.py openai gpt-5.4-mini 100 16 25 24 4 0.35 (M=24 mixed-type, K=16, budget=25, B_ri=4, theta=0.35 -- byte-identical regime to the Qwen run)",
+      "PRIMARY_GATE": "dropwatch_esc strict-min minus pin_fair strict-min: paired bootstrap CI lower bound > 0 AND dropwatch_esc cost_per_hop <= pin_fair cost_per_hop (4.0). PASS -> observed-drop adaptive pinning beats a-priori fair pinning at no extra cost ON A FRONTIER MODEL, i.e. the method generalizes past Qwen. FAIL -> report honestly; the algorithm's advantage is model-specific and pin_fair remains the recommendation on this model.",
+      "secondary": "dropwatch_esc vs pin_oracle (oracle is an inflated upper anchor, not expected to be beaten); executed cost_per_hop of dropwatch/dropwatch_esc should be < B_ri=4 (event-driven quiescence).",
+      "predictions": "dropwatch_esc - pin_fair CI lower bound > 0 (point ~ +0.10..0.25, matching the Qwen +0.175); dropwatch/dropwatch_esc cost 2.5-3.8 < 4.0. RISK: frontier tau=0.5 means drops are even more front-loaded than Qwen; watchdog may saturate faster -- could help (earlier detection) or hurt (less time to recover). Honestly uncertain on magnitude; the CI-excl-0 gate is the real test."
+    },
+    "N2_natural": {
+      "cmd": "n2natural.py openai gpt-5.4-mini (16 fictional prose docs x 4 facts, ks=0,1,2,4,8, budget=40, arms handoff/faithful/longctx/nofact)",
+      "PRE_REGISTERED_GATES": {
+        "G1_decay_exists": "handoff S(0)-S(8) >= 0.20 on checkable types (numeric/entity/preference).",
+        "G2_moat": "handoff drop - longctx drop >= 0.20.",
+        "G3_facts_not_parametric": "nofact chance <= 0.15 (fictional specifics unanswerable without the doc).",
+        "G4_faithful_lifts_deep_k": "faithful S(8) - handoff S(8) >= 0.10."
+      },
+      "predictions": "all four gates PASS as on Qwen (Qwen: chance .021, tau 1.39, moat replicated, faithful +0.48). RISK: gpt-5.4-mini may have SEEN more of the web and answer fictional facts by luck -> G3 chance slightly higher; still expect <= 0.15 given the specifics are authored-fictional."
+    }
+  },
+  "honest_notes": [
+    "Both runs share NOTHING with the framing cache (separate cache files cache_e4_gpt-5.4-mini.json, cache_n2_gpt-5.4-mini.json) -> safe to run concurrently.",
+    "negation facts remain unwatchable in DROPWATCH (all-'no' answers) and secondary in N2 -- same honest scope as Qwen.",
+    "This run does NOT include newstance/per-instance frontier text-predictability (still a scope statement in the paper; P3, deferred)."
+  ]
+}

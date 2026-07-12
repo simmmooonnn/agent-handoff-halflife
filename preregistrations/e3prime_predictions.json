@@ -1,0 +1,11 @@
+{
+  "registered": "2026-07-05 BEFORE run. E3' scheduler-save experiment. M=24 mixed-type facts, per-hop re-injection budget B_ri=4 (pin-all infeasible), K=16, theta=0.35, budget=25, n=100. Qwen2.5-7B + Mistral-7B.",
+  "hypothesis": "Once selection is forced (bounded B_ri) and tau is heterogeneous (mixed types), tau-aware EDF (a_star_edf) allocates more re-injection slots to fast-decaying types (numeric, tau=0.74) than round-robin/random/pin, lifting the strict-min-over-types (which is bottlenecked by the fastest decayer).",
+  "prediction": {
+    "a_star_edf_strict_min": "highest of the 4 policies",
+    "expected_gap_vs_best_baseline": "+0.05 to +0.15 on strict-min",
+    "numeric_per_type": "a_star_edf numeric survival > round_robin numeric (more slots to the fast type)"
+  },
+  "gate": "a_star_edf - max(round_robin,random,pin_fixed) on strict-min: paired bootstrap 95% CI lower bound > 0 on >= 1 family -> PASS (scheduler earns its keep in the forced-selection regime). Else FAIL -> demote to surface-consumer.",
+  "fallback_if_fail": "Report honestly that even under forced bounded-budget selection tau-aware scheduling does not CI-beat round-robin; the scheduler is a consumer of the Sec.8d probe outputs, not a standalone contribution."
+}

@@ -1,0 +1,17 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-11",
+  "experiment": "FRONTIER BUDGET-SATURATION GENERALITY (top-conf hardening item #2). e12 found on Sonnet that budget cannot buy retention (B 15->100 = 6.7x moved k>=1 survival only .12->.28; model voluntarily discards below its word cap; the Qwen budget law tau~B^1.0 does not transfer). Single-model evidence -> a reviewer can dismiss it as a Sonnet quirk. This replicates the sweep on additional frontier models: claude-haiku-4-5 (small-frontier) and a stronger frontier model (claude-opus-4-8 or claude-fable-5, whichever the key serves; availability ping run before launch).",
+  "design": "Grid B in {15,40,100} x k in {1,2,4} plus k=0 anchor at B=25; n=32 probes/cell (8/type, ndist=7 mixed distractors); temp=0; neutral handoff via run_chain -- IDENTICAL regime to e12-Sonnet for direct comparison. Reference points: Sonnet k=4: S(15)=.12, S(40)=.25, S(100)=.28 (gain +.16 over 6.7x = SATURATED). Qwen-7B k=4: S(8)=.19, S(16)=.25, S(40)=.44 and rising (BINDS).",
+  "metric": "S(k=4; B) across B; headline scalar = gain from Bmin to Bmax at k=4 and absolute S(k=4, B=100).",
+  "PRE_REGISTERED_READOUT": {
+    "FRONTIER_LAW": "BOTH new frontier models saturate (S(4,100) < 0.5 AND gain < 0.2 over 6.7x budget) -> 'budget cannot buy retention' generalizes across the frontier family; promote to headline law: the standard mitigation (longer summaries) provably fails on frontier models; only structural exemption works.",
+    "CAPABILITY_GRADED": "One saturates (the stronger) and one binds Qwen-like (Haiku) -> saturation ONSET correlates with capability: 'the more capable the summarizer, the less your budget matters' -- consistent with the earlier frontier-forgets-faster finding; report as a capability-graded transition (also headline-grade, arguably more interesting).",
+    "SONNET_QUIRK": "BOTH bind (survival rises substantially with budget) -> the saturation is Sonnet-specific; demote to a single-model observation with honest scoping; the paper's frontier claim weakens to 'at least one frontier model'."
+  },
+  "predictions": {
+    "point": "Expect FRONTIER_LAW or CAPABILITY_GRADED. Haiku 4.5 is the likeliest to bind (smaller, possibly more literal summarizer); the stronger model should saturate like Sonnet. Mechanistic expectation: saturation correlates with the model's tendency to write summaries far below the word cap (voluntary discard).",
+    "risk": "(1) Model ID availability on this key (ping first; fall back opus-4-8 -> fable-5 -> report). (2) Cost: stronger-model run ~1000 calls with short prompts; acceptable. (3) n=32/cell directional (binomial SE ~0.09); the saturate-vs-bind contrast expected >> noise (Sonnet-vs-Qwen gap was .28 vs .44+ at k=4 with opposite trends).",
+    "honest_limits": "Three frontier models total (Sonnet + 2) from ONE vendor family (Anthropic; OpenAI quota exhausted) -- scope the claim to 'across the Claude frontier family' and note GPT-5.x untested on this axis; single regime (M=8-equivalent, neutral framing)."
+  }
+}

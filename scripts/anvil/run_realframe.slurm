@@ -1,0 +1,18 @@
+#!/bin/bash
+#SBATCH -A YOUR_ALLOCATION
+#SBATCH -p gpu-debug
+#SBATCH --gpus-per-node=1
+#SBATCH -t 00:30:00
+#SBATCH -J hl_rf
+#SBATCH -o rf_%j.out
+module load anaconda/2024.02-py311
+source activate $SCRATCH/envs/halflife
+export HF_HOME=$SCRATCH/hf_cache
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+cd $SCRATCH/agent-handoff-halflife
+: "${MODEL:=Qwen/Qwen2.5-7B-Instruct}"; : "${N:=40}"; : "${KS:=0,1,2,4}"
+: "${BUDGET:=25}"; : "${MFACTS:=8}"; : "${CONDS:=handoff,persona}"
+echo "RUN realframe MODEL=$MODEL N=$N KS=$KS BUDGET=$BUDGET MFACTS=$MFACTS CONDS=$CONDS on $(hostname)"
+python realframe.py hf "$MODEL" "$N" "$KS" "$BUDGET" "$MFACTS" "$CONDS"
+echo "EXIT=$?"

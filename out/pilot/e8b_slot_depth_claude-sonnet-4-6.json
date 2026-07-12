@@ -1,0 +1,80 @@
+{
+  "model": "claude-sonnet-4-6",
+  "budget": 25,
+  "n_probes": 10,
+  "ndist": 7,
+  "KS": [
+    8,
+    20
+  ],
+  "by_k": {
+    "8": {
+      "per_type": {
+        "numeric": {
+          "slots_copy": 1,
+          "slots_regen": 1,
+          "copy_minus_regen": 0,
+          "verbatim_copy": 1,
+          "verbatim_regen": 0
+        },
+        "entity": {
+          "slots_copy": 1,
+          "slots_regen": 1,
+          "copy_minus_regen": 0,
+          "verbatim_copy": 1,
+          "verbatim_regen": 0
+        },
+        "negation": {
+          "slots_copy": 0.9,
+          "slots_regen": 0.7,
+          "copy_minus_regen": 0.2,
+          "verbatim_copy": 1,
+          "verbatim_regen": 0.1
+        },
+        "preference": {
+          "slots_copy": 0.9,
+          "slots_regen": 0.8,
+          "copy_minus_regen": 0.1,
+          "verbatim_copy": 1,
+          "verbatim_regen": 0
+        }
+      },
+      "avg_copy_minus_regen": 0.075,
+      "numeric_copy_minus_regen": 0
+    },
+    "20": {
+      "per_type": {
+        "numeric": {
+          "slots_copy": 1,
+          "slots_regen": 1,
+          "copy_minus_regen": 0,
+          "verbatim_copy": 1,
+          "verbatim_regen": 0
+        },
+        "entity": {
+          "slots_copy": 1,
+          "slots_regen": 1,
+          "copy_minus_regen": 0,
+          "verbatim_copy": 1,
+          "verbatim_regen": 0
+        },
+        "negation": {
+          "slots_copy": 0.9,
+          "slots_regen": 0.7,
+          "copy_minus_regen": 0.2,
+          "verbatim_copy": 1,
+          "verbatim_regen": 0.1
+        },
+        "preference": {
+          "slots_copy": 1,
+          "slots_regen": 0.9,
+          "copy_minus_regen": 0.1,
+          "verbatim_copy": 1,
+          "verbatim_regen": 0
+        }
+      },
+      "avg_copy_minus_regen": 0.075,
+      "numeric_copy_minus_regen": 0
+    }
+  }
+}

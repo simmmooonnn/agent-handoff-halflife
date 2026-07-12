@@ -1,0 +1,17 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-10",
+  "experiment": "SLOT DEPTH SWEEP: fair test of the TRANSCRIPTION-vs-STRUCTURE question that e8 (K=6) could not answer due to a ceiling (slots_copy==slots_regen==1.00 on numeric/entity). Run only the two slot arms (copy = verbatim reproduce, regen = same [SLOTS]/[NOTES] structure but slots REWRITTEN each hop) at shallow K=8 and deep K=20, all 4 types, PROBES=10, NDIST=7, budget=25.",
+  "hypothesis": "arXiv 2601.03640: regeneration drift grows with the number of regeneration events. slots_regen regenerates the slot K times; slots_copy transcribes it K times (near-lossless). If TRANSCRIPTION is the causal lever, the copy-minus-regen gap should OPEN with depth (small at K=8, large at K=20, esp. on numeric, the tokenization-fragile type 2601.03640 studies). If STRUCTURE alone is the effect, copy~regen at both depths and the gap stays ~0.",
+  "metric": "per-type survival for copy and regen; copy_minus_regen gap; verbatim (fraction where the slot line literally survives in the final carry) for BOTH arms -> distinguishes 'slot dropped' from 'slot present but value drifted/answered wrong'.",
+  "PRE_REGISTERED_READOUT": {
+    "TRANSCRIPTION_IS_LEVER": "avg copy_minus_regen at K=20 is substantially larger than at K=8 (gap opens with depth), driven by numeric (and preference); verbatim_regen falls below verbatim_copy at K=20 (regen literally drifts the slot text). -> copy-vs-regeneration is the real mechanism; the e8 tie was a ceiling artifact. Clean 2601.03640-style story: SAME structure, only the copy-vs-rewrite operation differs, and depth separates them.",
+    "STRUCTURE_IS_LEVER": "copy ~ regen at BOTH K=8 and K=20 (gap stays ~0, both hold high or both fall together) -> structure (a protected non-compressed slot section) is the whole effect; copy is not the lever. Honest reframe: the contribution is 'protected structured slots >> free-text handoff, ~= out-of-band store, in-band' + measurement-driven field selection; drop the transcription-specific claim.",
+    "BOTH_FAIL_DEEP": "both copy and regen collapse toward neutral at K=20 (structure itself erodes with depth) -> in-band structure only delays erasure; out-of-band store (survival 1.0) remains the sole guarantee at depth. Report the delay-not-prevent honestly; strengthens the out-of-band necessity argument."
+  },
+  "predictions": {
+    "point": "Most likely STRUCTURE_IS_LEVER on entity/negation (self-correcting / structural) but a real gap opening on NUMERIC at K=20 (numeric is where regeneration drift bites per 2601.03640). If numeric copy_minus_regen goes from ~0 at K=8 to >=0.3 at K=20, transcription earns a scoped claim: 'for tokenization-fragile numeric fields, verbatim copy beats structured rewrite at depth.'",
+    "risk": "n=10/type/K is thin (directional, temp=0 single sample); K=20 with a single slot may still be easy (only one protected line, little to drift) -> may need multi-slot contention to see drift. If inconclusive, the honest paper claim is the structure result + out-of-band necessity, with transcription noted as a depth-dependent second-order effect.",
+    "honest_limits": "single model (Sonnet); single slot; two depths; no bootstrap CIs at n=10 (report as directional). This settles the mechanism DIRECTION, not a precise effect size."
+  }
+}

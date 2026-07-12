@@ -1,0 +1,21 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-12",
+  "experiment": "REAL-TASK EXTERNAL-VALIDITY ANCHOR (top-conf hardening item #1, the borderline->accept piece). Reviewer objection: all laws so far live on synthetic planted facts + filler. This measures the same quantities on six coherent realistic workplace documents (realdocs.py: incident postmortem, sprint kickoff, vendor minutes, onboarding brief, design review, escalation handoff; 8 naturally-embedded verifiable facts each: 2 numeric, 2 entity, 2 negation incl. one permitted, 2 preference; fact sentences verbatim in prose, uniqueness asserted) under realistic summarize-and-handoff relays on Sonnet.",
+  "arms": {
+    "realistic": "uncapped colleague-handoff instruction, k hops (what practitioners actually do; tests whether VOLUNTARY compression alone erases naturally-embedded facts -- connects to the e12 voluntary-discard observation).",
+    "budgeted": "60-word cap per hop (pressure comparable to synthetic regime; docs ~200-260 words -> compression ratio ~4x like M=8/B=25).",
+    "slots": "budgeted + [SLOTS] exemption block holding the 4 MEASURED-most-fragile facts (preference+numeric per Sonnet calibration e7-med) copied verbatim; notes capped at 30 words."
+  },
+  "design": "k in {0,1,2,4,6}; k=0 queried once on the full doc (arm-independent). 48 facts total; per-fact rows saved (e14_rows JSONL) for bootstrap CIs (over facts, paired where applicable).",
+  "PRE_REGISTERED_READOUT": {
+    "ANCHORED": "budgeted aggregate survival falls by >= 0.25 from k=0 to k=6 AND slots-budgeted paired diff at k=6 >= +0.20 with CI excl 0. -> the decay law and the exemption mechanism transfer to real coherent content; external validity anchored. (realistic arm reported descriptively either way: if it also decays substantially, voluntary compression alone erases facts -- the strongest version.)",
+    "PARTIAL": "budgeted decays (>=0.25 drop) and slots rescue positive but < +0.20 or CI touches 0; OR budgeted decays but realistic barely decays (<0.10 drop by k=6) -> law binds under budget pressure but real free-form handoffs are gentler; scope claims to budget-pressured pipelines and report the voluntary-compression measurement honestly.",
+    "NOT_ANCHORED": "budgeted drop < 0.15 by k=6 on real content -> the synthetic collapse is substantially an artifact of incoherent filler + templated facts; major honest scoping of the whole paper."
+  },
+  "predictions": {
+    "point": "budgeted decays strongly but with HIGHER floors than synthetic (coherent narrative gives redundancy/guessability, esp. negation via plausibility and entity via role-name association). realistic decays moderately (Sonnet voluntarily compresses -- e12 showed discard below cap; expect ~0.15-0.35 drop by k=6). slots rescues its protected types to ~1.0 and lifts aggregate by >= +0.2. Type ordering: numeric/preference weakest in budgeted (matching synthetic); negation strongest (yes/no plausibility guessing).",
+    "risk": "(1) Real prose may protect numbers via narrative salience (a single dramatic number survives summarization better than one of 8 templated numbers) -> decay could be milder than predicted; that is exactly what the anchor is for -- report as measured. (2) Negation floor ~0.5 by guessing inflates aggregates; per-type breakdown carries the honest signal. (3) 48 facts -> CIs ~ +/-0.13 on aggregates; adequate for the >= 0.25 and >= 0.20 thresholds. (4) Docs are author-written realistic style, not scraped -- disclosed; they are coherent, non-templated, and inspectable in-repo, which addresses the substance of the objection (filler + template artifacts).",
+    "honest_limits": "single model (Sonnet); 6 documents, one content domain (workplace ops); author-authored corpus (disclosed); slot selection uses prior Sonnet calibration rather than in-run leave-one-out (the measurement-driven choice is itself part of the claim)."
+  }
+}

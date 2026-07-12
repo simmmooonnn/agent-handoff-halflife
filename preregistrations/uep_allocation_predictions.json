@@ -1,0 +1,30 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-09",
+  "experiment": "MEASUREMENT-DRIVEN UEP BUDGET ALLOCATION (the sub-problem). Given that out-of-band protection is the ONLY thing that preserves fragile facts (in-band impossibility established: re-injection/stance/modulation/diversity all fail on numbers), and out-of-band budget is SCARCE, the algorithmic question is WHICH facts to offload. Claim: allocating a scarce protection budget by MEASURED per-type half-life beats the folk heuristic ('protect numbers') and random/uniform allocation, because fact-type fragility is NON-OBVIOUS and MODEL-DEPENDENT.",
+  "why_novel": "Prior art (scout): UEP-for-LLM-tokens (TokCom, physical channel, continuous importance), folk wisdom 'keep numbers verbatim' (Mem0), half-life-driven eviction (FadeMem), MemGPT (recency paging). NONE derives an out-of-band PROTECTION allocation from a MEASURED per-type retention curve in a text-handoff pipeline, and none exploits that the fragility RANKING is model-dependent. The defensible contribution = the composition + the measurement-necessity result.",
+  "data": "REAL per-fact handoff (no-protection) survival at k=max from framing_rows_{model}.jsonl, 5 models (Qwen, Mistral, Phi, gpt-5.4-mini, claude-sonnet-4-6), 100 facts x 4 types. Pure simulation, NO new API calls. Protected facts assumed survival=1.0 (out-of-band = value never enters the compressor, correct by construction; noted as assumption).",
+  "motivating_finding": "Fragility ranking at k=max is model-dependent and non-obvious: worst type is preference (Mistral, Phi), a tie numeric=entity (gpt-5.4-mini), or numeric (Qwen, Sonnet). Folk 'protect numbers' misses the true worst type on 3/5 models.",
+  "protocol": {
+    "split": "deterministic calibration/test split per type (even fact-index = calibration to MEASURE per-type survival; odd = held-out TEST to evaluate allocation). No peeking at test outcomes for allocation.",
+    "budget": "protect fraction phi in {0.0,0.1,0.2,0.3,0.4,0.5} of TEST facts out-of-band (survival->1).",
+    "policies": {
+      "none": "no protection (baseline = mean test survival).",
+      "random": "protect random phi.N test facts (expectation over draws).",
+      "folk_numbers": "protect numeric test facts first, spill to random.",
+      "measured_greedy": "rank test facts by their type's CALIBRATION survival ascending; protect the phi.N most-fragile-by-measurement first. [OURS]",
+      "oracle": "protect the actually-dead test facts first (upper bound)."
+    },
+    "metric": "mean TEST-fact survival at k=max vs phi. Provisioning: budget phi needed to reach target survival T, predicted from calibration vs actual on test."
+  },
+  "PRE_REGISTERED_READOUT": {
+    "WORKS": "measured_greedy >= folk_numbers at every phi AND strictly > folk_numbers (area between curves > 0) on the models where a non-numeric type is among the worst (Mistral/Phi/gpt-5.4-mini), AND measured_greedy tracks oracle within a modest gap while random lags. -> measurement-driven allocation is a real, provisionable algorithm; folk heuristic is suboptimal because fragility is model-dependent.",
+    "WEAK": "measured_greedy ~ folk_numbers everywhere (numbers happen to always be worst) -> the value of measurement is only the provisioning rule, not beating the heuristic; report honestly as such.",
+    "FAIL": "measured_greedy ~ random -> per-type measurement carries no allocation signal (would contradict the measured rankings; not expected)."
+  },
+  "predictions": {
+    "point": "measured_greedy clearly > random > none, approaching oracle. measured_greedy > folk_numbers on Mistral/Phi (preference worst) and gpt-5.4-mini (entity tied worst); measured_greedy ~ folk_numbers on Qwen/Sonnet (numeric worst). Cross-model, folk_numbers leaves survival on the table on 3/5 models.",
+    "provisioning": "budget-to-target predicted from calibration should match test within a few points (per-type survival is stable across the split).",
+    "honest_limits": "type-level allocation only (1 seed -> no reliable per-fact signal beyond type); protected=1.0 is by construction; the win over folk-heuristic is contingent on non-numeric types being fragile, which the data shows on 3/5 models."
+  }
+}

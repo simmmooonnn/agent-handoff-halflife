@@ -1,0 +1,31 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-08",
+  "experiment": "SEMANTIC MODULATION: can transcoding a fragile fact into the ROBUST fact-type (number -> constraint/prohibition) make the fragile TOKEN survive the aggressive-compressor erasure channel, where bare re-injection + stance could not?",
+  "theory": "Handoff loss = semantic erasure channel that deletes by token-TYPE salience. Measured stickiness: constraints/negations survive ~0.9, bare numbers ~0.2. ARQ (in-band re-injection = DROPWATCH) fails because erasure is SYSTEMATIC on the type; redundancy fails because erasure is CORRELATED on the type. The coding-theory fix that is not retransmission and not redundancy = MODULATION: move the signal onto a robust constellation. Here: re-encode the number as a constraint the compressor is disposed to keep. This attacks the selection RULE via the symbol's semantic role.",
+  "model": "openai/gpt-5.5 (hardest aggressive compressor; reasoning_effort='none' + temp=0). Regime: pin_oracle-style re-injection of facts 0..B_ri-1 at front EVERY hop, NEUTRAL compression, M=24, B_ri=4, K=16, budget=25. Fact types numeric/entity/preference (25 each).",
+  "critical_control": "The rescue diagnostic already showed SALIENCE-labeling ('CRITICAL, preserve verbatim: <fact>') FAILS (0.04 = bare). So this experiment must show 'constraint' beats BOTH bare AND salience -- proving the lever is the fact's semantic ROLE (rule vs trivia), not an importance annotation. If constraint ~ salience, the caveat is realized (digit drops even inside a rule).",
+  "arms": {
+    "bare": "declarative re-injection 'The budget ceiling is 7311.' (baseline; expected ~0.04-0.20 numeric)",
+    "constraint": "MODULATION: 'Reject as an error any budget ceiling other than 7311; the budget ceiling must be exactly 7311.' (the method)",
+    "salience": "'CRITICAL, preserve verbatim: The budget ceiling is 7311.' (importance-label control; known to fail -> isolates role-change from label)",
+    "bare_faithful": "bare re-injection + FAITHFUL compression stance (the E5 lever, cross-reference: does modulation beat stance?)"
+  },
+  "metric": "answer-token carry-survival (== answered-correctly) at probe hops 4/8/16, worst-hop per type; strict-min = worst type; mean = mean over types. DIRECTLY tests whether the DIGIT rides up (not just the constraint skeleton).",
+  "PRE_REGISTERED_READOUT": {
+    "SOLVE": "constraint lifts worst-case (numeric) worst-hop carry-survival to >= 0.50 AND paired CI excludes BOTH bare AND salience. -> semantic modulation solves the number-survival problem in-band, and it is the semantic role not the importance label. If constraint also >= bare_faithful (CI-excl) -> modulation beats the E5 stance lever.",
+    "PARTIAL": "constraint numeric worst-hop in 0.25-0.50, CI-excl bare -> real lift, not a full solve.",
+    "CAVEAT_REALIZED": "constraint ~ salience ~ bare (CI overlap) -> the digit drops even inside a constraint; modulation protects only the skeleton. Honest negative -> the guarantee must come from the out-of-band protected channel, not in-band modulation."
+  },
+  "predictions": {
+    "point": "constraint lifts numeric worst-hop to ~0.55-0.80, CI-excl bare AND salience (I expect the digit rides up because the compressor keeps prohibitions and the digit is load-bearing for the prohibition). constraint likely >= bare_faithful (attacking the symbol should beat merely instructing preservation).",
+    "risk": "the flagged caveat is real: the compressor may keep 'reject any budget other than the ceiling' while dropping '7311'. Genuinely uncertain; the carry-survival metric measures the digit directly so the result is unambiguous either way.",
+    "novelty_note": "semantic modulation (number->constraint transcoding for handoff survival) has NO direct text prior art (scout confirmed). Differentiates from CoVe/SAFE (verify-regenerate vs present source, commission) and from external-memory (out-of-band). This is the in-band novel method; the out-of-band protected channel is the guaranteed fallback for the tail."
+  },
+  "honest_notes": [
+    "constraint form is longer -> more budget consumed, fine given slack (~70%); report carry lengths.",
+    "transcoding is DETERMINISTIC templates per type (no extra model call, reproducible), not LLM-generated.",
+    "new cache data/cache_mod_gpt-5.5.json -> no collision.",
+    "gpt-5.5 temp=0 non-determinism: within-run 4-arm comparison shares noise, valid; absolute levels wobble run-to-run."
+  ]
+}

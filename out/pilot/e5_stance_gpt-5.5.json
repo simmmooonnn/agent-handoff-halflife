@@ -1,0 +1,136 @@
+{
+  "model": "gpt-5.5",
+  "n": 100,
+  "K": 16,
+  "M": 24,
+  "B_ri": 4,
+  "theta": 0.35,
+  "budget": 25,
+  "probe_ks": [
+    4,
+    8,
+    16
+  ],
+  "arms": {
+    "pin_fair": {
+      "strict_min": 0.0,
+      "mean": 0.22,
+      "min_ci": [
+        0.0,
+        0.0
+      ],
+      "cost_per_hop": 4.0,
+      "faithful_hop_frac": 0.0,
+      "per_type": {
+        "entity": 0.0,
+        "negation": 0.76,
+        "numeric": 0.0,
+        "preference": 0.12
+      }
+    },
+    "dropwatch_esc": {
+      "strict_min": 0.0,
+      "mean": 0.15,
+      "min_ci": [
+        0.0,
+        0.0
+      ],
+      "cost_per_hop": 3.75,
+      "faithful_hop_frac": 0.0,
+      "per_type": {
+        "entity": 0.0,
+        "negation": 0.56,
+        "numeric": 0.0,
+        "preference": 0.04
+      }
+    },
+    "faithful_always": {
+      "strict_min": 0.0,
+      "mean": 0.24,
+      "min_ci": [
+        0.0,
+        0.0
+      ],
+      "cost_per_hop": 0.0,
+      "faithful_hop_frac": 1.0,
+      "per_type": {
+        "entity": 0.08,
+        "negation": 0.84,
+        "numeric": 0.0,
+        "preference": 0.04
+      }
+    },
+    "pin_fair_faithful": {
+      "strict_min": 0.12,
+      "mean": 0.44,
+      "min_ci": [
+        0.0,
+        0.24
+      ],
+      "cost_per_hop": 4.0,
+      "faithful_hop_frac": 1.0,
+      "per_type": {
+        "entity": 0.36,
+        "negation": 0.92,
+        "numeric": 0.12,
+        "preference": 0.36
+      }
+    },
+    "dropwatch_stance": {
+      "strict_min": 0.08,
+      "mean": 0.4,
+      "min_ci": [
+        0.0,
+        0.16
+      ],
+      "cost_per_hop": 3.75,
+      "faithful_hop_frac": 0.94,
+      "per_type": {
+        "entity": 0.72,
+        "negation": 0.6,
+        "numeric": 0.2,
+        "preference": 0.08
+      }
+    },
+    "pin_oracle": {
+      "strict_min": 0.08,
+      "mean": 0.37,
+      "min_ci": [
+        0.0,
+        0.2
+      ],
+      "cost_per_hop": 4.0,
+      "faithful_hop_frac": 0.0,
+      "per_type": {
+        "entity": 0.32,
+        "negation": 0.72,
+        "numeric": 0.08,
+        "preference": 0.36
+      }
+    }
+  },
+  "comparisons": {
+    "PRIMARY_stance_minus_pinfair": {
+      "point": 0.074,
+      "ci": [
+        0.0,
+        0.16
+      ]
+    },
+    "stance_minus_dwesc": {
+      "point": 0.074,
+      "ci": [
+        0.0,
+        0.16
+      ]
+    },
+    "stance_minus_faithalways": {
+      "point": 0.074,
+      "ci": [
+        0.0,
+        0.16
+      ]
+    }
+  },
+  "gate_pass": false
+}

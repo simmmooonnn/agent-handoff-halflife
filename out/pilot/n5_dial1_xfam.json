@@ -1,0 +1,202 @@
+{
+  "Mistral-7B-Instruct-v0.3": {
+    "model": "mistralai/Mistral-7B-Instruct-v0.3",
+    "curve": {
+      "c": 0.24883038981930325,
+      "slope": 0.5417871546766959,
+      "floor": 0.2119233819235485
+    },
+    "anchors": [
+      {
+        "budget": 8,
+        "w": 10.682142857142857,
+        "tau": 0.8613412078699627,
+        "f": 0.1138666333194575
+      },
+      {
+        "budget": 16,
+        "w": 17.61,
+        "tau": 1.1439263724460125,
+        "f": 0.09953876108153928
+      },
+      {
+        "budget": 25,
+        "w": 26.787142857142857,
+        "tau": 1.7932047790083667,
+        "f": 0.16784633805309276
+      },
+      {
+        "budget": 50,
+        "w": 40.232142857142854,
+        "tau": 1.627908971529327,
+        "f": 0.46644179524010454
+      }
+    ],
+    "arms": [
+      {
+        "arm": "node@25",
+        "realized_w": 27.7,
+        "S4_obs": 0.32,
+        "S4_pred_from_length": 0.261,
+        "stance_residual": 0.059,
+        "dial2_present": false
+      },
+      {
+        "arm": "rolecont@25",
+        "realized_w": 31.5,
+        "S4_obs": 0.45,
+        "S4_pred_from_length": 0.271,
+        "stance_residual": 0.179,
+        "dial2_present": true
+      },
+      {
+        "arm": "persona@25",
+        "realized_w": 33.9,
+        "S4_obs": 0.4,
+        "S4_pred_from_length": 0.276,
+        "stance_residual": 0.124,
+        "dial2_present": true
+      },
+      {
+        "arm": "distrust@25",
+        "realized_w": 33.9,
+        "S4_obs": 0.64,
+        "S4_pred_from_length": 0.276,
+        "stance_residual": 0.364,
+        "dial2_present": true
+      },
+      {
+        "arm": "selfsumm@25",
+        "realized_w": 33.8,
+        "S4_obs": 0.67,
+        "S4_pred_from_length": 0.276,
+        "stance_residual": 0.394,
+        "dial2_present": true
+      },
+      {
+        "arm": "neutral_long@25",
+        "realized_w": 22.2,
+        "S4_obs": 0.17,
+        "S4_pred_from_length": 0.247,
+        "stance_residual": -0.077,
+        "dial2_present": false
+      },
+      {
+        "arm": "faithful@25",
+        "realized_w": 34.8,
+        "S4_obs": 0.74,
+        "S4_pred_from_length": 0.279,
+        "stance_residual": 0.461,
+        "dial2_present": true
+      },
+      {
+        "arm": "handoff@25",
+        "realized_w": 26.8,
+        "S4_obs": 0.2,
+        "S4_pred_from_length": 0.259,
+        "stance_residual": -0.059,
+        "dial2_present": false
+      }
+    ]
+  },
+  "Phi-3-medium-4k-instruct": {
+    "model": "microsoft/Phi-3-medium-4k-instruct",
+    "curve": {
+      "c": 0.0019329235647689593,
+      "slope": 2.0357997181097254,
+      "floor": 0.32658496633697465
+    },
+    "anchors": [
+      {
+        "budget": 8,
+        "w": 6.807142857142857,
+        "tau": 0.05734319610643976,
+        "f": 0.19999999896559859
+      },
+      {
+        "budget": 16,
+        "w": 11.67142857142857,
+        "tau": 0.5816778225950846,
+        "f": 0.3003758392256743
+      },
+      {
+        "budget": 25,
+        "w": 17.645714285714284,
+        "tau": 0.8919712652812577,
+        "f": 0.3176733369691675
+      },
+      {
+        "budget": 50,
+        "w": 26.689285714285713,
+        "tau": 0.9576086249120196,
+        "f": 0.48829069018745824
+      }
+    ],
+    "arms": [
+      {
+        "arm": "node@25",
+        "realized_w": 16.9,
+        "S4_obs": 0.36,
+        "S4_pred_from_length": 0.327,
+        "stance_residual": 0.033,
+        "dial2_present": false
+      },
+      {
+        "arm": "rolecont@25",
+        "realized_w": 21.9,
+        "S4_obs": 0.49,
+        "S4_pred_from_length": 0.339,
+        "stance_residual": 0.151,
+        "dial2_present": true
+      },
+      {
+        "arm": "persona@25",
+        "realized_w": 22.8,
+        "S4_obs": 0.4,
+        "S4_pred_from_length": 0.343,
+        "stance_residual": 0.057,
+        "dial2_present": false
+      },
+      {
+        "arm": "distrust@25",
+        "realized_w": 23.4,
+        "S4_obs": 0.73,
+        "S4_pred_from_length": 0.347,
+        "stance_residual": 0.383,
+        "dial2_present": true
+      },
+      {
+        "arm": "selfsumm@25",
+        "realized_w": 26.9,
+        "S4_obs": 0.62,
+        "S4_pred_from_length": 0.373,
+        "stance_residual": 0.247,
+        "dial2_present": true
+      },
+      {
+        "arm": "neutral_long@25",
+        "realized_w": 21.4,
+        "S4_obs": 0.65,
+        "S4_pred_from_length": 0.337,
+        "stance_residual": 0.313,
+        "dial2_present": true
+      },
+      {
+        "arm": "faithful@25",
+        "realized_w": 22.2,
+        "S4_obs": 0.81,
+        "S4_pred_from_length": 0.34,
+        "stance_residual": 0.47,
+        "dial2_present": true
+      },
+      {
+        "arm": "handoff@25",
+        "realized_w": 17.6,
+        "S4_obs": 0.24,
+        "S4_pred_from_length": 0.328,
+        "stance_residual": -0.088,
+        "dial2_present": false
+      }
+    ]
+  }
+}

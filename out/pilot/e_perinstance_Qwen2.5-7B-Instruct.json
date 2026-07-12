@@ -1,0 +1,22 @@
+{
+  "tag": "Qwen2.5-7B-Instruct",
+  "n_train_facts": 50,
+  "n_test_facts": 50,
+  "n_test_rows": 1200,
+  "covariates": "arm x ftype x k (Laplace, backoff arm-k -> k -> global)",
+  "brier_perinstance": 0.1919,
+  "brier_aggregate_curve_baseline": 0.2322,
+  "brier_global_baseline": 0.2398,
+  "skill_vs_aggregate_curve": 0.1736,
+  "skill_ci": [
+    0.1357,
+    0.2117
+  ],
+  "auroc": 0.8248,
+  "auroc_ci": [
+    0.7988,
+    0.8499
+  ],
+  "auroc_aggregate_curve": 0.6307,
+  "note": "held-out-fact evaluation; skill>0 with CI>0 means instance covariates (arm, ftype) add real predictability beyond the aggregate curve -- the honest PredictaBoard-style claim. If skill~0, keep only the curve-calibration wording (round-6 C1 fallback)."
+}

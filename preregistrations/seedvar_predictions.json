@@ -1,0 +1,9 @@
+{
+  "registered": "2026-07-04, BEFORE jobs run. R1.3 decoding-variance check: temp=0.7, dseeds {1,2,3}, n=100, budget=25, M=8, Qwen2.5-7B. Predictions = the greedy (temp-0) S(k) values from the committed row files (framing_rows / protocol_rows / newstance_rows / deepprobe_rows / pilot rows). GATES: G1 median over all cells of |mean-over-seeds S - S_greedy| <= 0.10; G2 |S(8)-S(4)| of the seed-mean <= 0.05 for each of handoff/manifest/ledger. Fallbacks pre-registered in seedvar.py header.",
+  "greedy": {
+    "handoff":  {"0": 0.91, "1": 0.63, "2": 0.36, "4": 0.23, "8": 0.23},
+    "manifest": {"0": 0.91, "1": 0.81, "2": 0.67, "4": 0.66, "8": 0.66},
+    "ledger":   {"0": 0.91, "1": 0.22, "2": 0.16, "4": 0.16, "8": 0.16},
+    "node":     {"0": 0.91, "1": 0.13, "2": 0.13, "4": 0.13}
+  }
+}

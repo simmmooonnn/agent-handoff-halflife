@@ -1,0 +1,27 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-09",
+  "experiment": "UEP-LIVE: end-to-end confirmation of measurement-driven out-of-band budget allocation on a REAL pipeline (Sonnet). Closes the gap that the allocation result so far is a simulation on cached per-fact survival, with protected=1.0 assumed.",
+  "why": "User flagged (correctly) that uep_allocation.py is a simulation on real survival data, not a live allocate->protect->run->measure loop. This validates: (a) unprotected in-band survival under a real M=24 chain, (b) out-of-band protected facts answer ~1.0 by construction, (c) measured_greedy allocation beats folk/random/none LIVE.",
+  "design": "Sonnet, temp=0. C=12 chains, each carries M=24 mixed facts (6 per type) through K=8 neutral handoff hops (budget=25). At depth K, query ALL 24 facts -> per-fact in-band survival. Out-of-band store holds the canonical value of PROTECTED facts (answered from the store => correct by construction; the value never enters the compressor). Allocation policies pick which B=phi*M facts per chain to protect.",
+  "regime_note": "M=24 (heavier contention than the M=8 framing_rows used for the simulation) -> a stronger, self-consistent test at the DROPWATCH/E5 pressure level.",
+  "policies_per_phi": {
+    "none": "no protection.",
+    "random": "protect random B facts/chain (avg over draws).",
+    "folk_numbers": "protect numeric facts first.",
+    "measured_greedy": "protect facts of the types with lowest survival first, using per-type survival MEASURED on the OTHER chains (leave-one-out / held-out calibration). [OURS]",
+    "oracle": "protect the actually-dead facts first (upper bound)."
+  },
+  "phis": [0.0, 0.125, 0.25, 0.375, 0.5],
+  "metric": "mean per-fact survival at k=K over all chains x facts, vs phi. Protected facts survive by construction; unprotected by their measured in-band outcome.",
+  "PRE_REGISTERED_READOUT": {
+    "CONFIRMS": "LIVE curve reproduces the simulation qualitatively: measured_greedy >= folk_numbers at every phi and > random, approaching oracle; out-of-band protected facts score ~1.0. -> the allocation algorithm works in a real pipeline, not just in simulation.",
+    "PARTIAL": "measured_greedy > random but ~ folk_numbers live (numbers dominate fragility at M=24) -> honest: measurement's edge over folk is regime-dependent; still beats random+near-oracle.",
+    "CONTRADICTS": "measured_greedy ~ random live -> the cached-data allocation advantage does not survive a real run; report and rethink."
+  },
+  "predictions": {
+    "point": "measured_greedy >= folk >= random > none, near oracle, matching the simulation shape. Out-of-band protected ~1.0. Possible BONUS: because protected facts are removed from the carry (future extension), real benefit may exceed the simulation; this run keeps all facts in-carry (protected answered from store) to match the simulation exactly first.",
+    "risk": "M=24 fresh survival may differ from M=8 framing rates (heavier pressure -> lower survival, more facts fragile). The RANKING of types should be stable; the absolute curve may shift. per-type fragility ranking is the load-bearing claim and should replicate.",
+    "honest_limits": "12 chains is modest n; protected removed-from-carry contention benefit deferred; temp=0 single sample per fact."
+  }
+}

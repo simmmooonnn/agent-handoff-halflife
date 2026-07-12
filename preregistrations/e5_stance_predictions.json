@@ -1,0 +1,32 @@
+{
+  "committed_before_run": true,
+  "date": "2026-07-07",
+  "experiment": "E5 DROPWATCH-S: does STANCE-ESCALATION rescue the closed-loop repair controller on an aggressive compressor (gpt-5.5), where the original pin-based DROPWATCH failed (gate FAIL, dropwatch_esc-pin_fair +0.000)?",
+  "basis": "Rescue diagnostic (commit 11cc9d3) proved the pin_oracle re-injection CEILING on gpt-5.5 lifts from ~0.04 (neutral compression) to 0.52 [.32,.72] under a FAITHFUL compression stance; salience content-labeling did NOT help (0.04). So the rescue lever is the compressor's STANCE, not which facts are pinned. E5 builds that lever into the detect+repair loop and tests it end-to-end with a gate.",
+  "model": "openai/gpt-5.5 (hardest failing model; reasoning_effort='none' + temp=0). Regime identical to E4: M=24 mixed, K=16, budget=25, B_ri=4, theta=0.35, n=100. strict-min estimand, paired-over-facts bootstrap.",
+  "policies": {
+    "pin_fair": "fixed random B_ri re-inject, neutral compression [original E4 gate baseline]",
+    "dropwatch_esc": "adaptive+escalate re-inject, neutral compression [original method; FAILED on gpt-5.5]",
+    "faithful_always": "no re-inject, faithful compression EVERY hop [pure Moat-2 baseline: 'just always preserve']",
+    "pin_fair_faithful": "fixed random re-inject + faithful compression every hop [isolates adaptivity given stance]",
+    "dropwatch_stance": "adaptive+escalate re-inject + faithful compression on repairing hops, neutral when quiescent [THE METHOD]",
+    "pin_oracle": "re-inject facts 0..B_ri-1, neutral compression [upper anchor]"
+  },
+  "PRE_REGISTERED_COMPARISONS": {
+    "PRIMARY_rescue_gate": "dropwatch_stance strict-min minus pin_fair strict-min: paired bootstrap CI lower bound > 0 AND dropwatch_stance cost_per_hop <= pin_fair (4.0). PASS -> stance-escalation rescues the method where pinning could not, on the hardest aggressive compressor. FAIL -> report honestly.",
+    "stance_lever": "dropwatch_stance minus dropwatch_esc, CI-excl-0 -> the stance lever adds value to the SAME re-injection logic (isolates stance from targeting).",
+    "adaptivity_control": "dropwatch_stance minus faithful_always. If ~0 (CI includes 0) -> the adaptive detector does NOT earn its keep on aggressive compressors and the honest recommendation is 'just always use preservation stance'; report that. If > 0 -> targeted re-injection adds value on top of stance."
+  },
+  "predictions": {
+    "primary": "dropwatch_stance beats pin_fair (rescue gate PASS); point ~ +0.15..0.40, cost < 4.0 (adaptive, faithful adds no API calls).",
+    "stance_lever": "dropwatch_stance > dropwatch_esc, CI-excl-0 (the whole point of the diagnostic).",
+    "adaptivity": "GENUINELY UNCERTAIN and the most interesting control. faithful_always may capture most of the gain (stance does the heavy lifting per the diagnostic); if so, dropwatch_stance - faithful_always ~ small/zero and the honest headline becomes 'on aggressive compressors, preservation stance is the fix; adaptive detection is optional'. I will report whichever way it lands and NOT bury a null adaptivity result.",
+    "pin_fair_faithful": "expected close to faithful_always (fixed pinning under neutral was already ~useless; adding stance mainly helps via the stance)."
+  },
+  "honest_notes": [
+    "New cache data/cache_e5_gpt-5.5.json -> no collision with e4/rescue caches.",
+    "Reproducibility caveat (from the diagnostic): gpt-5.5 temp=0 API is not fully deterministic; 16-hop chains amplify token diffs. Within-run 6-policy comparison shares the noise and is valid; absolute levels carry run-to-run wobble. The gate is a within-run contrast.",
+    "cost metric = re-injection slots/hop (faithful stance adds no API call). faithful compression may emit longer carries; that is a token consideration, not counted here, noted for honesty.",
+    "If gate PASSES on gpt-5.5, the method (DROPWATCH-S) is the rescue; Sonnet/mini confirmation can follow. If adaptivity control is null, the deliverable is still a method (stance-escalation) plus an honest 'detector-optional' scope."
+  ]
+}

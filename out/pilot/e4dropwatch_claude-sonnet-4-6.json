@@ -1,0 +1,121 @@
+{
+  "model": "claude-sonnet-4-6",
+  "n": 100,
+  "K": 16,
+  "M": 24,
+  "B_ri": 4,
+  "theta": 0.35,
+  "budget": 25,
+  "probe_ks": [
+    4,
+    8,
+    16
+  ],
+  "arms": {
+    "pin_oracle": {
+      "strict_min": 0.16,
+      "mean": 0.47,
+      "min_ci": [
+        0.04,
+        0.28
+      ],
+      "cost_per_hop": 4.0,
+      "per_type": {
+        "entity": 0.84,
+        "negation": 0.6,
+        "numeric": 0.16,
+        "preference": 0.28
+      }
+    },
+    "pin_fair": {
+      "strict_min": 0.0,
+      "mean": 0.16,
+      "min_ci": [
+        0.0,
+        0.0
+      ],
+      "cost_per_hop": 4.0,
+      "per_type": {
+        "entity": 0.08,
+        "negation": 0.56,
+        "numeric": 0.0,
+        "preference": 0.0
+      }
+    },
+    "random": {
+      "strict_min": 0.0,
+      "mean": 0.15,
+      "min_ci": [
+        0.0,
+        0.0
+      ],
+      "cost_per_hop": 4.0,
+      "per_type": {
+        "entity": 0.08,
+        "negation": 0.52,
+        "numeric": 0.0,
+        "preference": 0.0
+      }
+    },
+    "a_star_edf": {
+      "strict_min": 0.0,
+      "mean": 0.13,
+      "min_ci": [
+        0.0,
+        0.0
+      ],
+      "cost_per_hop": 4.0,
+      "per_type": {
+        "entity": 0.04,
+        "negation": 0.48,
+        "numeric": 0.0,
+        "preference": 0.0
+      }
+    },
+    "dropwatch": {
+      "strict_min": 0.0,
+      "mean": 0.18,
+      "min_ci": [
+        0.0,
+        0.0
+      ],
+      "cost_per_hop": 3.75,
+      "per_type": {
+        "entity": 0.16,
+        "negation": 0.52,
+        "numeric": 0.0,
+        "preference": 0.04
+      }
+    },
+    "dropwatch_esc": {
+      "strict_min": 0.04,
+      "mean": 0.2,
+      "min_ci": [
+        0.0,
+        0.08
+      ],
+      "cost_per_hop": 3.75,
+      "per_type": {
+        "entity": 0.16,
+        "negation": 0.52,
+        "numeric": 0.04,
+        "preference": 0.08
+      }
+    }
+  },
+  "dropwatch_esc_minus_pin_fair": {
+    "point": 0.024,
+    "ci": [
+      0.0,
+      0.08
+    ]
+  },
+  "dropwatch_esc_minus_pin_oracle": {
+    "point": -0.128,
+    "ci": [
+      -0.24,
+      0.0
+    ]
+  },
+  "gate_pass": false
+}

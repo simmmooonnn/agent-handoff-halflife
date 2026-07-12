@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-4-6",
+  "n_docs": 16,
+  "n_facts": 64,
+  "budget": 40,
+  "ks": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "chance_nofact": 0,
+  "chance_nofact_negation_secondary": 0.812,
+  "gate_types": "numeric/entity/preference (48 probes); negation secondary",
+  "handoff": {
+    "S": [
+      0.938,
+      0.625,
+      0.625,
+      0.542,
+      0.521
+    ],
+    "tau": 0.789,
+    "r2": 0.965,
+    "f": 0.543
+  },
+  "faithful": {
+    "S": [
+      0.938,
+      0.812,
+      0.729,
+      0.667,
+      0.625
+    ]
+  },
+  "handoff_negation_secondary": {
+    "S": [
+      0.938,
+      0.938,
+      1,
+      1,
+      1
+    ]
+  },
+  "longctx": {
+    "S": [
+      0.938,
+      0.938,
+      0.938,
+      0.938,
+      0.938
+    ]
+  },
+  "gates": {
+    "G1_decay_exists": true,
+    "G2_moat": true,
+    "G3_facts_not_parametric": true,
+    "G4_faithful_lifts_deep_k": true
+  },
+  "verdict": "NATURAL PASS: tau_h and the moat exist for natural prose facts"
+}

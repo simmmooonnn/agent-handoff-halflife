@@ -1,0 +1,7 @@
+{
+  "registered": "2026-07-05 v2 BEFORE rerun. R2.2 recall-vs-task alignment (round-5 C8). v1 used a +1000 ARITHMETIC query which coupled recall with an arithmetic sub-skill Qwen-7B failed even at k=0 (S_task=0 everywhere, uninterpretable). v2 uses a THRESHOLD COMPARISON ('Is {subject} greater than 5000? yes/no') graded by first yes/no token (chance 0.5): requires recalling the value, no arithmetic/format sub-skill. Qwen2.5-7B, numeric facts (n=200 -> 50 numeric), handoff@25, M=8, ks=0,1,2,4,8.",
+  "hypothesis": "If a fact's survival tracks its task-usability, tau_task ~= tau_recall. tau_task fit with chance 0.5 (yes/no), tau_recall with chance 0.001.",
+  "prediction": {"S_task_k0": ">0.8 (should nearly match recall at k=0)", "tau_task_over_recall": "~0.7-1.3 (task tracks recall)"},
+  "gate": "aligned if 0.6 <= tau_task/tau_recall <= 1.67. ALIGNED -> recall validated as task proxy (answers C8: fact-death causes task-failure). MISALIGNED -> report task-level tau.",
+  "sanity": "S_task[k=0] must be well above chance 0.5; if not, the task is still broken."
+}

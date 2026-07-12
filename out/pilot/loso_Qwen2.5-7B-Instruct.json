@@ -1,0 +1,171 @@
+{
+  "cells": [
+    {
+      "cell": "selfsumm@25",
+      "cls": "neutral",
+      "w": 13.138571428571428,
+      "S4": 0.27,
+      "pred_class": 0.341,
+      "err_class": 0.071,
+      "pred_lenonly": 0.234,
+      "err_lenonly": 0.036,
+      "pred_globalmean": 0.366,
+      "err_globalmean": 0.096
+    },
+    {
+      "cell": "persona@25",
+      "cls": "rewrite",
+      "w": 12.814285714285715,
+      "S4": 0.18,
+      "pred_class": 0.164,
+      "err_class": 0.016,
+      "pred_lenonly": 0.232,
+      "err_lenonly": 0.052,
+      "pred_globalmean": 0.374,
+      "err_globalmean": 0.194
+    },
+    {
+      "cell": "node@25",
+      "cls": "rewrite",
+      "w": 9.038571428571428,
+      "S4": 0.13,
+      "pred_class": 0.174,
+      "err_class": 0.044,
+      "pred_lenonly": 0.222,
+      "err_lenonly": 0.092,
+      "pred_globalmean": 0.369,
+      "err_globalmean": 0.239
+    },
+    {
+      "cell": "rolecont@25",
+      "cls": "rewrite",
+      "w": 10.154285714285715,
+      "S4": 0.18,
+      "pred_class": 0.151,
+      "err_class": 0.029,
+      "pred_lenonly": 0.223,
+      "err_lenonly": 0.043,
+      "pred_globalmean": 0.364,
+      "err_globalmean": 0.184
+    },
+    {
+      "cell": "distrust@25",
+      "cls": "neutral",
+      "w": 13.314285714285715,
+      "S4": 0.39,
+      "pred_class": 0.283,
+      "err_class": 0.107,
+      "pred_lenonly": 0.235,
+      "err_lenonly": 0.155,
+      "pred_globalmean": 0.354,
+      "err_globalmean": 0.036
+    },
+    {
+      "cell": "neutral_long@25",
+      "cls": "neutral",
+      "w": 16.38714285714286,
+      "S4": 0.32,
+      "pred_class": 0.356,
+      "err_class": 0.036,
+      "pred_lenonly": 0.26,
+      "err_lenonly": 0.06,
+      "pred_globalmean": 0.39,
+      "err_globalmean": 0.07
+    },
+    {
+      "cell": "faithful@25",
+      "cls": "preservation",
+      "w": 21.68285714285714,
+      "S4": 0.58,
+      "pred_class": 0.637,
+      "err_class": 0.057,
+      "pred_lenonly": 0.327,
+      "err_lenonly": 0.253,
+      "pred_globalmean": 0.438,
+      "err_globalmean": 0.142
+    },
+    {
+      "cell": "itemize@25",
+      "cls": "preservation",
+      "w": 42.41285714285714,
+      "S4": 0.87,
+      "pred_class": 0.883,
+      "err_class": 0.013,
+      "pred_lenonly": 0.574,
+      "err_lenonly": 0.296,
+      "pred_globalmean": 0.684,
+      "err_globalmean": 0.186
+    },
+    {
+      "cell": "manifest@25",
+      "cls": "preservation",
+      "w": 19.004285714285714,
+      "S4": 0.66,
+      "pred_class": 0.555,
+      "err_class": 0.105,
+      "pred_lenonly": 0.291,
+      "err_lenonly": 0.369,
+      "pred_globalmean": 0.386,
+      "err_globalmean": 0.274
+    },
+    {
+      "cell": "faithman@25",
+      "cls": "preservation",
+      "w": 24.88714285714286,
+      "S4": 0.7,
+      "pred_class": 0.651,
+      "err_class": 0.049,
+      "pred_lenonly": 0.373,
+      "err_lenonly": 0.327,
+      "pred_globalmean": 0.472,
+      "err_globalmean": 0.228
+    },
+    {
+      "cell": "itemize@12",
+      "cls": "preservation",
+      "w": 28.302857142857142,
+      "S4": 0.59,
+      "pred_class": 0.729,
+      "err_class": 0.139,
+      "pred_lenonly": 0.42,
+      "err_lenonly": 0.17,
+      "pred_globalmean": 0.53,
+      "err_globalmean": 0.06
+    },
+    {
+      "cell": "faithful@50",
+      "cls": "preservation",
+      "w": 26.76142857142857,
+      "S4": 0.61,
+      "pred_class": 0.709,
+      "err_class": 0.099,
+      "pred_lenonly": 0.399,
+      "err_lenonly": 0.211,
+      "pred_globalmean": 0.509,
+      "err_globalmean": 0.101
+    }
+  ],
+  "median_abs_err": {
+    "class": 0.053,
+    "lenonly": 0.163,
+    "globalmean": 0.163
+  },
+  "mse": {
+    "class": 0.0056,
+    "lenonly": 0.0426,
+    "globalmean": 0.0283
+  },
+  "class_rule": {
+    "faithful": "preservation",
+    "faithman": "preservation",
+    "itemize": "preservation",
+    "manifest": "preservation",
+    "node": "rewrite",
+    "persona": "rewrite",
+    "rolecont": "rewrite",
+    "selfsumm": "neutral",
+    "distrust": "neutral",
+    "neutral_long": "neutral"
+  },
+  "class_beats_both": true
+}

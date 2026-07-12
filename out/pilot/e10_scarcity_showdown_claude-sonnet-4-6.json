@@ -1,0 +1,23 @@
+{
+  "model": "claude-sonnet-4-6",
+  "M": 12,
+  "K": 4,
+  "C": 10,
+  "budget": 25,
+  "P": 4,
+  "total": {
+    "free_text": 0.267,
+    "mem0": 0.883,
+    "ours": 0.742,
+    "ref_oracle@P": 0.6,
+    "ref_folk@P": 0.558,
+    "ref_random@P": 0.51
+  },
+  "free_text_per_type": {
+    "entity": 0.567,
+    "negation": 0.5,
+    "numeric": 0,
+    "preference": 0
+  },
+  "ours_minus_mem0": -0.141
+}
