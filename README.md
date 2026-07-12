@@ -174,7 +174,7 @@ Paper in preparation. Until then, please cite the repository:
 ```bibtex
 @misc{agent-handoff-halflife,
   title  = {The Half-Life of Information Across Agent Hand-offs},
-  author = {},
+  author = {Zijian Su},
   year   = {2026},
   note   = {https://github.com/USERNAME/agent-handoff-halflife}
 }
